@@ -1,0 +1,3703 @@
+{
+	"info": {
+		"_postman_id": "9a610049-ee57-420a-80a6-19c428c5307e",
+		"name": "APISiswa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "View Agama",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBlcm1hZGkiLCJ1c2VySWQiOiJjZmU3MGI3YS1iMDg3LTQ4ZmYtODM5Yy05MGFkNDYyMjU5YzIiLCJpYXQiOjE2MTQxNTQzNTUsImV4cCI6MTYxNDI0MDc1NX0.QBnpLVwyFSEj4L4FTlmFndoo8crmZ8PG5sYB2O7SDCE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_agama",
+							"value": "16",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/agama/view",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"agama",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View byID Agama",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "localhost:8800/agama/view/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"agama",
+						"view",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Ayah",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/ayah/view",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"ayah",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Agama",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "agama",
+							"value": "baru",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8800/agama/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"agama",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Agama",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "agama",
+							"value": "Baru 2",
+							"type": "text"
+						},
+						{
+							"key": "id_agama",
+							"value": "22",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/agama/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"agama",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Agama",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_agama",
+							"value": "25",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/agama/delete/56",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"agama",
+						"delete",
+						"56"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View byID Ayah",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/ayah/view/PRM030221001",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"ayah",
+						"view",
+						"PRM030221001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Ayah",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_ayah",
+							"value": "PRM030221006",
+							"type": "text"
+						},
+						{
+							"key": "nama_ayah",
+							"value": "Indra",
+							"type": "text"
+						},
+						{
+							"key": "nik",
+							"value": "1234567891",
+							"type": "text"
+						},
+						{
+							"key": "tgl_lahir",
+							"value": "1980-09-01",
+							"type": "text"
+						},
+						{
+							"key": "id_pendidikan",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "id_pekerjaan",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "id_penghasilan",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_disabilitas",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/ayah/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"ayah",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Ayah",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_ayah",
+							"value": "PRM030221006",
+							"type": "text"
+						},
+						{
+							"key": "nama_ayah",
+							"value": "Asep",
+							"type": "text"
+						},
+						{
+							"key": "nik",
+							"value": "1234567891",
+							"type": "text"
+						},
+						{
+							"key": "tgl_lahir",
+							"value": "1980-09-01",
+							"type": "text"
+						},
+						{
+							"key": "id_pendidikan",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "id_pekerjaan",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "id_penghasilan",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_disabilitas",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/ayah/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"ayah",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Ayah",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_ayah",
+							"value": "PRM030221006",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/ayah/delete",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"ayah",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Bank",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nama_bank",
+							"value": "Bank Ilegal",
+							"type": "text"
+						},
+						{
+							"key": "norek",
+							"value": "123456789",
+							"type": "text"
+						},
+						{
+							"key": "atas_nama",
+							"value": "Maria",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/bank/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"bank",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Bank",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_bank",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "nama_bank",
+							"value": "BCA",
+							"type": "text"
+						},
+						{
+							"key": "norek",
+							"value": "123456789",
+							"type": "text"
+						},
+						{
+							"key": "atas_nama",
+							"value": "Maria Ismi",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/bank/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"bank",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Bank",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_bank",
+							"value": "8",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/bank/delete",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"bank",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Bank",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/bank/view",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"bank",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View byID Bank",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/bank/view/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"bank",
+						"view",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add DetailBeasiswa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_siswa",
+							"value": "SSW050221001",
+							"type": "text"
+						},
+						{
+							"key": "jenis",
+							"value": "Sains",
+							"type": "text"
+						},
+						{
+							"key": "keterangan",
+							"value": "Juara 1 gombalin cewe",
+							"type": "text"
+						},
+						{
+							"key": "tahun_mulai",
+							"value": "2020",
+							"type": "text"
+						},
+						{
+							"key": "tahun_selesai",
+							"value": "2021",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/detailbeasiswa/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"detailbeasiswa",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update DetailBeasiswa",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_detail_beasiswa",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "id_siswa",
+							"value": "SSW050221001",
+							"type": "text"
+						},
+						{
+							"key": "jenis",
+							"value": "Sains",
+							"type": "text"
+						},
+						{
+							"key": "keterangan",
+							"value": "Juara 1 matematika murni",
+							"type": "text"
+						},
+						{
+							"key": "tahun_mulai",
+							"value": "2020",
+							"type": "text"
+						},
+						{
+							"key": "tahun_selesai",
+							"value": "2021",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/detailbeasiswa/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"detailbeasiswa",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete DetailBeasiswa",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_detail_beasiswa",
+							"value": "5",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/detailbeasiswa/delete",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"detailbeasiswa",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View DetailBeasiswa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/detailbeasiswa/view",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"detailbeasiswa",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View byID DetailBeasiswa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/detailbeasiswa/view/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"detailbeasiswa",
+						"view",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add DetailPrestasi",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_siswa",
+							"value": "SSW050221001",
+							"type": "text"
+						},
+						{
+							"key": "jenis_prestasi",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "tingkat_prestasi",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "nama_prestasi",
+							"value": "Juara 1 menikung gebetan teman",
+							"type": "text"
+						},
+						{
+							"key": "tahun",
+							"value": "2021",
+							"type": "text"
+						},
+						{
+							"key": "penyelenggara",
+							"value": "Kantor Cabang Semesta",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/detailprestasi/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"detailprestasi",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update DetailPrestasi",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_detailprestasi",
+							"value": "7",
+							"type": "text"
+						},
+						{
+							"key": "id_siswa",
+							"value": "SSW050221001",
+							"type": "text"
+						},
+						{
+							"key": "jenis_prestasi",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "tingkat_prestasi",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "nama_prestasi",
+							"value": "Juara 1 menikung gebetan teman",
+							"type": "text"
+						},
+						{
+							"key": "tahun",
+							"value": "2021",
+							"type": "text"
+						},
+						{
+							"key": "penyelenggara",
+							"value": "Kantor Cabang Semesta",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/detailprestasi/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"detailprestasi",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete DetailPrestasi",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_detail_prestasi",
+							"value": "7",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/detailprestasi/delete",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"detailprestasi",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View DetailPrestasi",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/detailprestasi/view",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"detailprestasi",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View byID DetailPrestasi",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/detailprestasi/view/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"detailprestasi",
+						"view",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Disabilitas",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "status_disabilitas",
+							"value": "difabel",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/disabilitas/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"disabilitas",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Disabilitas",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_disabilitas",
+							"value": "19",
+							"type": "text"
+						},
+						{
+							"key": "status_disabilitas",
+							"value": "non difabel",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/disabilitas/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"disabilitas",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Disabilitas",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_disabilitas",
+							"value": "19",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/disabilitas/delete",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"disabilitas",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Disabilitas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/disabilitas/view",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"disabilitas",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View byID Disabilitas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/disabilitas/view/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"disabilitas",
+						"view",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Ibu",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_ibu",
+							"value": "PRF030221006",
+							"type": "text"
+						},
+						{
+							"key": "nama_ibu",
+							"value": "Sari",
+							"type": "text"
+						},
+						{
+							"key": "nik",
+							"value": "123456789",
+							"type": "text"
+						},
+						{
+							"key": "tgl_lahir",
+							"value": "1998-04-03",
+							"type": "text"
+						},
+						{
+							"key": "id_pendidikan",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_pekerjaan",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_penghasilan",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_disabilitas",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/ibu/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"ibu",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Ibu",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_ibu",
+							"value": "PRF030221006",
+							"type": "text"
+						},
+						{
+							"key": "nama_ibu",
+							"value": "Intan",
+							"type": "text"
+						},
+						{
+							"key": "nik",
+							"value": "123456789",
+							"type": "text"
+						},
+						{
+							"key": "tgl_lahir",
+							"value": "1998-04-03",
+							"type": "text"
+						},
+						{
+							"key": "id_pendidikan",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_pekerjaan",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_penghasilan",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_disabilitas",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/ibu/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"ibu",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Ibu",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_ibu",
+							"value": "PRF030221006",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/ibu/delete",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"ibu",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Ibu",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/ibu/view",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"ibu",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View byID Ibu",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/ibu/view/PRF030221001",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"ibu",
+						"view",
+						"PRF030221001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add JenisAlasan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "alasan",
+							"value": "DO",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/jenisalasan/add?jenis_alasan=Malas",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"jenisalasan",
+						"add"
+					],
+					"query": [
+						{
+							"key": "jenis_alasan",
+							"value": "Malas"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update JenisAlasan",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_jenisalasan",
+							"value": "8",
+							"type": "text"
+						},
+						{
+							"key": "alasan",
+							"value": "D.O",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/jenisalasan/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"jenisalasan",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete JenisAlasan",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_jenisalasan",
+							"value": "8",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/jenisalasan/delete",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"jenisalasan",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View JenisAlasan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/jenisalasan/view",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"jenisalasan",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View byID JenisAlasan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/jenisalasan/view/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"jenisalasan",
+						"view",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Kecamatan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "kecamatan",
+							"value": "Plumbon",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/kecamatan/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"kecamatan",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Kecamatan",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_kecamatan",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "kecamatan",
+							"value": "Plumbon 2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/kecamatan/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"kecamatan",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Kecamatan",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_kecamatan",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/kecamatan/delete",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"kecamatan",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Kecamatan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/kecamatan/view",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"kecamatan",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View byID Kecamatan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/kecamatan/view/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"kecamatan",
+						"view",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Kelurahan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_kecamatan",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "kelurahan",
+							"value": "karangasem",
+							"type": "text"
+						},
+						{
+							"key": "kode_pos",
+							"value": "45155",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/kelurahan/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"kelurahan",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Kelurahan",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_kelurahan",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "id_kecamatan",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "kelurahan",
+							"value": "Karangasem2",
+							"type": "text"
+						},
+						{
+							"key": "kode_pos",
+							"value": "45155",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/kelurahan/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"kelurahan",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Kelurahan",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_kelurahan",
+							"value": "5",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/kelurahan/delete",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"kelurahan",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Pekerjaan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "pekerjaan",
+							"value": "Menganggur",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/pekerjaan/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"pekerjaan",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Pekerjaan",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_pekerjaan",
+							"value": "13",
+							"type": "text"
+						},
+						{
+							"key": "pekerjaan",
+							"value": "Jobseeker",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/pekerjaan/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"pekerjaan",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Pekerjaan",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/pekerjaan/delete?id_pekerjaan=13",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"pekerjaan",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "id_pekerjaan",
+							"value": "13"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Pekerjaan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/pekerjaan/view",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"pekerjaan",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View byID Pekerjaan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/pekerjaan/view/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"pekerjaan",
+						"view",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Pendidikan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "pendidikan",
+							"value": "tamatsd",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/pendidikan/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"pendidikan",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Pendidikan",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_pendidikan",
+							"value": "12",
+							"type": "text"
+						},
+						{
+							"key": "pendidikan",
+							"value": "tidaktamatsd",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/pendidikan/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"pendidikan",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Pendidikan",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_pendidikan",
+							"value": "12",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/pendidikan/delete",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"pendidikan",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Pendidikan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/pendidikan/view",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"pendidikan",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View byID Pendidikan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/pendidikan/view/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"pendidikan",
+						"view",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Penghasilan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "penghasilan",
+							"value": "tidak berpenghasilan",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/penghasilan/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"penghasilan",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Penghasilan",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_penghasilan",
+							"value": "7",
+							"type": "text"
+						},
+						{
+							"key": "penghasilan",
+							"value": "rahasia",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/penghasilan/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"penghasilan",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Penghasilan",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_penghasilan",
+							"value": "7",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/penghasilan/delete",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"penghasilan",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Penghasilan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/penghasilan/view",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"penghasilan",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View byID Penghasilan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/penghasilan/view/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"penghasilan",
+						"view",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add PIP",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_siswa",
+							"value": "SSW050221001",
+							"type": "text"
+						},
+						{
+							"key": "alasan_layakpip",
+							"value": "Keluarga Kurang Mampu",
+							"type": "text"
+						},
+						{
+							"key": "no_kip",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "nama_kip",
+							"value": "Udin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/pip/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"pip",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update PIP",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_pip",
+							"value": "6",
+							"type": "text"
+						},
+						{
+							"key": "id_siswa",
+							"value": "SSW050221001",
+							"type": "text"
+						},
+						{
+							"key": "alasan_layakpip",
+							"value": "Keluarga Kurang Mampu",
+							"type": "text"
+						},
+						{
+							"key": "no_kip",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "nama_kip",
+							"value": "Zulfi",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/pip/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"pip",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete PIP",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_pip",
+							"value": "7",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/pip/delete",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"pip",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View PIP",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/pip/view",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"pip",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View byID PIP",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/pip/view/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"pip",
+						"view",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add PriodikSiswa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_priodik_siswa",
+							"value": "PSW050221007",
+							"type": "text"
+						},
+						{
+							"key": "id_siswa",
+							"value": "SSW050221001",
+							"type": "text"
+						},
+						{
+							"key": "tinggi_badan",
+							"value": "165",
+							"type": "text"
+						},
+						{
+							"key": "berat_badan",
+							"value": "72",
+							"type": "text"
+						},
+						{
+							"key": "jarak_kesekolah",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "detail_jarak",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "waktu_tempuh",
+							"value": "01:00",
+							"type": "text"
+						},
+						{
+							"key": "jml_saudarakandung",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/priodiksiswa/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"priodiksiswa",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update PriodikSiswa",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_priodik_siswa",
+							"value": "PSW050221006",
+							"type": "text"
+						},
+						{
+							"key": "id_siswa",
+							"value": "SSW050221002",
+							"type": "text"
+						},
+						{
+							"key": "tinggi_badan",
+							"value": "156",
+							"type": "text"
+						},
+						{
+							"key": "berat_badan",
+							"value": "71",
+							"type": "text"
+						},
+						{
+							"key": "jarak_kesekolah",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "detail_jarak",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "waktu_tempuh",
+							"value": "01:00",
+							"type": "text"
+						},
+						{
+							"key": "jml_saudarakandung",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/priodiksiswa/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"priodiksiswa",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete PriodikSiswa",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_priodik_siswa",
+							"value": "PSW050221007",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/priodiksiswa/delete",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"priodiksiswa",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Kelurahan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/kelurahan/view",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"kelurahan",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View byID Kelurahan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/kelurahan/view/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"kelurahan",
+						"view",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View PriodikSiswa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/priodiksiswa/view/",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"priodiksiswa",
+						"view",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View byID PriodikSiswa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/priodiksiswa/view/PSW050221001",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"priodiksiswa",
+						"view",
+						"PSW050221001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Siswa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_siswa",
+							"value": "SSW050221013",
+							"type": "text"
+						},
+						{
+							"key": "nama_lengkap",
+							"value": "a",
+							"type": "text"
+						},
+						{
+							"key": "jenis_kelamin",
+							"value": "L",
+							"type": "text"
+						},
+						{
+							"key": "nisn",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "nik",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "tmp_lahir",
+							"value": "cirebon",
+							"type": "text"
+						},
+						{
+							"key": "tgl_lahir",
+							"value": "2008-04-16",
+							"type": "text"
+						},
+						{
+							"key": "id_agama",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "kewarganegaraan",
+							"value": "WNI",
+							"type": "text"
+						},
+						{
+							"key": "id_disabilitas",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "alamat_lengkap",
+							"value": "cirebon",
+							"type": "text"
+						},
+						{
+							"key": "id_kelurahan",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "nama_dusun",
+							"value": "dusun 1",
+							"type": "text"
+						},
+						{
+							"key": "no_rt",
+							"value": "001",
+							"type": "text"
+						},
+						{
+							"key": "no_rw",
+							"value": "001",
+							"type": "text"
+						},
+						{
+							"key": "id_statustinggal",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_transportasi",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "no_kps",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "id_pip",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "no_kks",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "no_akta",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "id_bank",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_ayah",
+							"value": "PRF030221001",
+							"type": "text"
+						},
+						{
+							"key": "id_ibu",
+							"value": "PRM030221001",
+							"type": "text"
+						},
+						{
+							"key": "id_wali",
+							"value": "PRW030221001",
+							"type": "text"
+						},
+						{
+							"key": "no_telp",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "no_hp",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "jhkhk@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/siswa/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"siswa",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Siswa",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_siswa",
+							"value": "SSW050221013",
+							"type": "text"
+						},
+						{
+							"key": "nama_lengkap",
+							"value": "b",
+							"type": "text"
+						},
+						{
+							"key": "jenis_kelamin",
+							"value": "P",
+							"type": "text"
+						},
+						{
+							"key": "nisn",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "nik",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "tmp_lahir",
+							"value": "cirebon",
+							"type": "text"
+						},
+						{
+							"key": "tgl_lahir",
+							"value": "2008-04-16",
+							"type": "text"
+						},
+						{
+							"key": "id_agama",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "kewarganegaraan",
+							"value": "WNI",
+							"type": "text"
+						},
+						{
+							"key": "id_disabilitas",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "alamat_lengkap",
+							"value": "cirebon",
+							"type": "text"
+						},
+						{
+							"key": "id_kelurahan",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "nama_dusun",
+							"value": "cirebon",
+							"type": "text"
+						},
+						{
+							"key": "no_rt",
+							"value": "001",
+							"type": "text"
+						},
+						{
+							"key": "no_rw",
+							"value": "001",
+							"type": "text"
+						},
+						{
+							"key": "id_statustinggal",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_transportasi",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "no_kps",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "id_pip",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "no_kks",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "no_akta",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "id_bank",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_ayah",
+							"value": "PRF030221001",
+							"type": "text"
+						},
+						{
+							"key": "id_ibu",
+							"value": "PRM030221001",
+							"type": "text"
+						},
+						{
+							"key": "id_wali",
+							"value": "PRW030221001",
+							"type": "text"
+						},
+						{
+							"key": "no_telp",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "no_hp",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "jhkhk@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/siswa/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"siswa",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Siswa",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_siswa",
+							"value": "SSW050221013",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/siswa/delete/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"siswa",
+						"delete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Siswa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/siswa/view",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"siswa",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View byID Siswa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/siswa/view/SSW050221001",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"siswa",
+						"view",
+						"SSW050221001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Siswa Keluar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_siswakeluar",
+							"value": "SWK050221004",
+							"type": "text"
+						},
+						{
+							"key": "id_siswa",
+							"value": "SSW050221004",
+							"type": "text"
+						},
+						{
+							"key": "id_jenisalasan",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "tgl_keluar",
+							"value": "2021-02-11",
+							"type": "text"
+						},
+						{
+							"key": "keterangan",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/siswakeluar/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"siswakeluar",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update SiswaKeluar",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_siswakeluar",
+							"value": "SWK050221004",
+							"type": "text"
+						},
+						{
+							"key": "id_siswa",
+							"value": "SSW050221004",
+							"type": "text"
+						},
+						{
+							"key": "id_jenisalasan",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "tgl_keluar",
+							"value": "2021-02-11",
+							"type": "text"
+						},
+						{
+							"key": "keterangan",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/siswakeluar/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"siswakeluar",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete SiswaKeluar",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_siswakeluar",
+							"value": "SWK050221005",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/siswakeluar/delete",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"siswakeluar",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View SiswaKeluar",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/siswakeluar/view",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"siswakeluar",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View byID SiswaKeluar",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/siswakeluar/view/SWK050221001",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"siswakeluar",
+						"view",
+						"SWK050221001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add SiswaMasuk",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_siswamasuk",
+							"value": "SWM050221005",
+							"type": "text"
+						},
+						{
+							"key": "id_siswa",
+							"value": "SSW050221005",
+							"type": "text"
+						},
+						{
+							"key": "jenis_daftar",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "tgl_masuk",
+							"value": "2021-02-11",
+							"type": "text"
+						},
+						{
+							"key": "nis",
+							"value": "122",
+							"type": "text"
+						},
+						{
+							"key": "no_ujian",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "no_ijasah",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "no_skhus",
+							"value": "123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/siswamasuk/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"siswamasuk",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update SiswaMasuk",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_siswamasuk",
+							"value": "SWM050221005",
+							"type": "text"
+						},
+						{
+							"key": "id_siswa",
+							"value": "SSW050221005",
+							"type": "text"
+						},
+						{
+							"key": "jenis_daftar",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "tgl_masuk",
+							"value": "2021-02-11",
+							"type": "text"
+						},
+						{
+							"key": "nis",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "no_ujian",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "no_ijasah",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "no_skhus",
+							"value": "123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/siswamasuk/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"siswamasuk",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View SiswaMasuk",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/siswamasuk/view",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"siswamasuk",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View byID SiswaMasuk",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/siswamasuk/view/SWM050221001",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"siswamasuk",
+						"view",
+						"SWM050221001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add StatusTinggal",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "status_tinggal",
+							"value": "Kolong Jembatan",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/statustinggal/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"statustinggal",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Status Tinggal",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_statustinggal",
+							"value": "7",
+							"type": "text"
+						},
+						{
+							"key": "status_tinggal",
+							"value": "Kolong Jembatan 2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/statustinggal/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"statustinggal",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete StatusTinggal",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_statustinggal",
+							"value": "7",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/statustinggal/delete",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"statustinggal",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View StatusTinggal",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/statustinggal/view",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"statustinggal",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View byID StatusTinggal",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/statustinggal/view/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"statustinggal",
+						"view",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Transportasi",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "status_transportasi",
+							"value": "Delman",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/transportasi/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"transportasi",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Transportasi",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_transportasi",
+							"value": "9",
+							"type": "text"
+						},
+						{
+							"key": "status_transportasi",
+							"value": "Delman 2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/transportasi/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"transportasi",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Transportasi",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_transportasi",
+							"value": "9",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/transportasi/delete?id_transportasi=9",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"transportasi",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "id_transportasi",
+							"value": "9"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Transportasi",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/transportasi/view",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"transportasi",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View byID Transportasi",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/transportasi/view/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"transportasi",
+						"view",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Wali",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_wali",
+							"value": "PRW030221006",
+							"type": "text"
+						},
+						{
+							"key": "nama_wali",
+							"value": "Surti",
+							"type": "text"
+						},
+						{
+							"key": "jenis_kelamin",
+							"value": "P",
+							"type": "text"
+						},
+						{
+							"key": "nik",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "tgl_lahir",
+							"value": "2021-02-11",
+							"type": "text"
+						},
+						{
+							"key": "id_pendidikan",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_pekerjaan",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_penghasilan",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_disabilitas",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/wali/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"wali",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Wali",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_wali",
+							"value": "PRW030221007",
+							"type": "text"
+						},
+						{
+							"key": "nama_wali",
+							"value": "Surti",
+							"type": "text"
+						},
+						{
+							"key": "jenis_kelamin",
+							"value": "L",
+							"type": "text"
+						},
+						{
+							"key": "nik",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "tgl_lahir",
+							"value": "2021-02-11",
+							"type": "text"
+						},
+						{
+							"key": "id_pendidikan",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_pekerjaan",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_penghasilan",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_disabilitas",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/wali/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"wali",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Wali",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_wali",
+							"value": "PRW030221007",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/wali/delete",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"wali",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Wali",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/wali/view",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"wali",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View byID Wali",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8800/wali/view/PRW030221001",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"wali",
+						"view",
+						"PRW030221001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete SiswaMasuk",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_siswamasuk",
+							"value": "SWM050221006",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8800/siswamasuk/delete",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"siswamasuk",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SignUp",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "username",
+						"value": "permadi",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"username\": \"permadi\",\r\n\"password\": \"permadi\",\r\n\"password_repeat\": \"permadi\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8800/sign-up",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"sign-up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SignIn",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"username\": \"permadi\",\r\n\"password\": \"permadi\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8800/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetSecretRoute",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBlcm1hZGkiLCJ1c2VySWQiOiJmNjVhMmY0NC1mMTFjLTQyOTYtOGYxMy1jNTEyYzIxODcxYWIiLCJpYXQiOjE2MTQwNTc1MzksImV4cCI6MTYxNDE0MzkzOX0.-nknLFJbacZm-TxL-NyJgohytnDyIPp0Jo59gKieWkc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBlcm1hZGkiLCJ1c2VySWQiOiJmNjVhMmY0NC1mMTFjLTQyOTYtOGYxMy1jNTEyYzIxODcxYWIiLCJpYXQiOjE2MTQwMDc2OTMsImV4cCI6MTYxNDYxMjQ5M30.kZOwcdCgb32GTEliZQHcXUOUFnvBylq9XHdUVFP4xSs",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "localhost:8800/api/secret-route",
+					"host": [
+						"localhost"
+					],
+					"port": "8800",
+					"path": [
+						"api",
+						"secret-route"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
