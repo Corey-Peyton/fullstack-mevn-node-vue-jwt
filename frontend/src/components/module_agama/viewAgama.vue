@@ -102,7 +102,7 @@ export default {
   },
  
   created() {
-    this.viewAgama();
+    this.viewAgama();    
   },
  
   methods: {

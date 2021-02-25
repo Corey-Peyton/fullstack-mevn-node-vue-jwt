@@ -10,9 +10,9 @@
     <div class="card-body">
       <p class="login-box-msg">Register a new membership</p>
 
-      <form action="#" method="post">
+      <form @submit.prevent="handleSubmit">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Username">
+          <input type="text" class="form-control" v-model="username" placeholder="Username">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -20,7 +20,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" class="form-control" v-model="password" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -28,7 +28,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Retype password">
+          <input type="password" class="form-control" v-model="password_repeat" placeholder="Retype password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -64,23 +64,35 @@
 
 <script>
 
+import axios from 'axios'
+
 export default {
   name: 'Register',
-  components: {
-    
+
+  data(){
+    return{
+      username: '',
+      password: '',
+      password_repeat: ''
+    }
   },
-  data() {
-    return {
-      
-    };
-  },
- 
-  created() {
-    
-  },
- 
+  
   methods: {
-    
+    async handleSubmit(){
+
+      // const response = axios.post('sign-up', {
+      axios.post('sign-up', {
+        username: this.username,
+        password: this.password,
+        password_repeat: this.password_repeat
+      });
+      // console.log(response);
+      this.username = '',
+      this.password = '',
+      this.password_repeat = ''
+      this.$router.push("login");
+
+    }
   },
 }
 </script>

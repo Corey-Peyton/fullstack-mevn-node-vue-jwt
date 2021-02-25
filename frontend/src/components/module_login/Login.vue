@@ -11,9 +11,9 @@
     <div class="card-body">
       <p class="login-box-msg">Sign in to start your session</p>
 
-      <form action="#" method="POST">
+      <form @submit.prevent="handleSubmit">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Username">
+          <input type="text" class="form-control" v-model="username" placeholder="Username">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -21,7 +21,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" class="form-control" v-model="password" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -73,23 +73,37 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'Login',
-  components: {
-    
-  },
   data() {
     return {
-      
+      username: '',
+      password: '',
     };
   },
- 
-  created() {
-    
-  },
- 
+  
   methods: {
-    
+    async handleSubmit(){
+
+      const response = await axios.post('login', {
+        username: this.username,
+        password: this.password
+      });
+      
+      this.username = '',
+      this.password = ''
+      // console.log(response);
+      localStorage.setItem('token', response.data.token);
+      this.$router.replace(
+        { name: 'dashboard', params: { ...this.$route.params } },
+        () => {
+          this.$router.go(0);
+        }
+      );
+
+    }
   },
 }
 </script>

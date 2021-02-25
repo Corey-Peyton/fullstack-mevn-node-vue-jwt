@@ -83,6 +83,8 @@ import axios from "axios";
 import Navbar from './_layouts/Navbar.vue'
 import Sidebar from './_layouts/Sidebar.vue'
 import Footer from './_layouts/Footer.vue'
+import './../axios'
+
 export default {
   name: 'App',
   components: {
@@ -110,7 +112,7 @@ export default {
     // Get All Siswa
     async viewRekapSiswa() {
       try {
-        const response = await axios.get("http://localhost:8800/siswa/viewrekap");
+        const response = await axios.get("siswa/viewrekap");
         this.items = response.data.values;
       } catch (err) {
         console.log(err);
@@ -118,7 +120,7 @@ export default {
     },
     async viewTotalSiswaL() {
       try {
-        const response = await axios.get("http://localhost:8800/siswa/viewtotall");
+        const response = await axios.get("siswa/viewtotall");
         this.itemsL = response.data.values;
       } catch (err) {
         console.log(err);
@@ -126,7 +128,7 @@ export default {
     },
     async viewTotalSiswaP() {
       try {
-        const response = await axios.get("http://localhost:8800/siswa/viewtotalp");
+        const response = await axios.get("siswa/viewtotalp");
         this.itemsP = response.data.values;
       } catch (err) {
         console.log(err);
@@ -134,7 +136,7 @@ export default {
     },
     async viewTotalSiswaS() {
       try {
-        const response = await axios.get("http://localhost:8800/siswa/viewtotal");
+        const response = await axios.get("siswa/viewtotal");
         this.itemsS = response.data.values;
       } catch (err) {
         console.log(err);
