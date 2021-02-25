@@ -21,12 +21,18 @@ import addSiswaKeluar from './components/module_keluar/addSiswaKeluar.vue'
 import updateSiswaKeluar from './components/module_keluar/updateSiswaKeluar.vue'
 import Login from './components/module_login/Login.vue'
 import Register from './components/module_login/Register.vue'
+import NotFound from './components/404.vue'
 
 const routes = [
     {
         name: '/',
         path: '/',
         component: Login
+    },
+    {
+        name: 'NotFound',
+        path: '*',
+        component: NotFound
     },
     {
         name: 'login',

@@ -8,6 +8,9 @@
       <router-link :to="{path: '/register'}" class="h1"><b>BSP</b>School</router-link>
     </div>
     <div class="card-body">
+      <div v-if="error" class="alert alert-danger" role="alert">
+        {{ error }}
+      </div>
       <p class="login-box-msg">Register a new membership</p>
 
       <form @submit.prevent="handleSubmit">
@@ -73,24 +76,32 @@ export default {
     return{
       username: '',
       password: '',
-      password_repeat: ''
+      password_repeat: '',
+      error: ''
     }
   },
   
   methods: {
     async handleSubmit(){
 
-      // const response = axios.post('sign-up', {
-      axios.post('sign-up', {
-        username: this.username,
-        password: this.password,
-        password_repeat: this.password_repeat
-      });
-      // console.log(response);
-      this.username = '',
-      this.password = '',
-      this.password_repeat = ''
-      this.$router.push("login");
+      try{
+        // const response = axios.post('sign-up', {
+        const response_reg = await axios.post('sign-up', {
+          username: this.username,
+          password: this.password,
+          password_repeat: this.password_repeat
+        });
+        console.log(response_reg);
+        this.username = '',
+        this.password = '',
+        this.password_repeat = ''
+        this.$router.push("login");
+      } catch(e) {
+        this.error = 'Register failed! Invalid Data!',
+        this.username = '',
+        this.password = '',
+        this.password_repeat = ''
+      }
 
     }
   },

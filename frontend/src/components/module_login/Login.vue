@@ -9,9 +9,12 @@
       <router-link :to="{path: '/login'}" class="h1"><b>BSP</b>School</router-link>
     </div>
     <div class="card-body">
+      <div v-if="error" class="alert alert-danger" role="alert">
+        {{ error }}
+      </div>
       <p class="login-box-msg">Sign in to start your session</p>
 
-      <form @submit.prevent="handleSubmit">
+      <form @submit.prevent="handleSubmit">        
         <div class="input-group mb-3">
           <input type="text" class="form-control" v-model="username" placeholder="Username">
           <div class="input-group-append">
@@ -81,27 +84,34 @@ export default {
     return {
       username: '',
       password: '',
+      error: ''
     };
   },
   
   methods: {
     async handleSubmit(){
 
-      const response = await axios.post('login', {
-        username: this.username,
-        password: this.password
-      });
-      
-      this.username = '',
-      this.password = ''
-      // console.log(response);
-      localStorage.setItem('token', response.data.token);
-      this.$router.replace(
-        { name: 'dashboard', params: { ...this.$route.params } },
-        () => {
-          this.$router.go(0);
-        }
-      );
+      try{
+        const response = await axios.post('login', {
+          username: this.username,
+          password: this.password
+        });
+        
+        this.username = '',
+        this.password = ''
+        // console.log(response);
+        localStorage.setItem('token', response.data.token);
+        this.$router.replace(
+          { name: 'dashboard', params: { ...this.$route.params } },
+          () => {
+            this.$router.go(0);
+          }
+        );
+      } catch(e) {
+        this.error = 'Invalid Username/Password!',
+        this.username = '',
+        this.password = ''
+      }
 
     }
   },
