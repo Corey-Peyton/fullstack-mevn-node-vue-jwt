@@ -19,12 +19,24 @@ import viewSiswaKeluar from './components/module_keluar/viewSiswaKeluar.vue'
 import infoSiswaKeluar from './components/module_keluar/infoSiswaKeluar.vue'
 import addSiswaKeluar from './components/module_keluar/addSiswaKeluar.vue'
 import updateSiswaKeluar from './components/module_keluar/updateSiswaKeluar.vue'
+import Login from './components/module_login/Login.vue'
+import Register from './components/module_login/Register.vue'
 
 const routes = [
     {
         name: '/',
         path: '/',
-        component: Dashboard
+        component: Login
+    },
+    {
+        name: 'login',
+        path: '/login',
+        component: Login
+    },
+    {
+        name: 'register',
+        path: '/register',
+        component: Register
     },
     {
         name: 'dashboard',

@@ -151,16 +151,7 @@ module.exports = function(app) {
 
     // route view
     // app.route('/agama/view').get(controllerAgama.viewAgama);
-    app.route('/agama/view').get(loginMiddleware.isLoggedIn, (req, res, next) => {
-        db.query("SELECT * FROM agama", function(error, rows, field){
-        if(error){
-            db.log(error);
-        } else {
-            response.ok(rows,res)
-        }
-        });
-        // res.json(get(controllerAgama.viewAgama));
-    });
+    app.route('/agama/view').get(loginMiddleware.isLoggedIn, controllerAgama.viewAgama);
 
     app.route('/ayah/view').get(controllerAyah.viewAyah);
 
