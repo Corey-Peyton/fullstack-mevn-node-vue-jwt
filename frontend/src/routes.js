@@ -23,6 +23,26 @@ import Login from './components/module_login/Login.vue'
 import Register from './components/module_login/Register.vue'
 import NotFound from './components/404.vue'
 
+function guardMyroute(to, from, next)
+{
+ var isAuthenticated= false;
+//this is just an example. You will have to find a better or 
+// centralised way to handle you localstorage data handling 
+let accessToken = localStorage.getItem('token');
+if(accessToken && accessToken !== '')
+  isAuthenticated = true;
+ else
+  isAuthenticated= false;
+ if(isAuthenticated) 
+ {
+  next(); // allow to enter route
+ } 
+ else
+ {
+  next('/login'); // go to '/login';
+ }
+}
+
 const routes = [
     {
         name: '/',
@@ -47,106 +67,127 @@ const routes = [
     {
         name: 'dashboard',
         path: '/dashboard',
+        beforeEnter : guardMyroute,
         component: Dashboard
     },
     {
         name: 'viewAgama',
         path: '/agama/view',
+        beforeEnter : guardMyroute,
         component: viewAgama
     },
     {
         name: 'addAgama',
         path: '/agama/add',
+        beforeEnter : guardMyroute,
         component: addAgama
     },
     {
         name: 'updateAgama',
         path: '/agama/update/:id',
+        beforeEnter : guardMyroute,
         component: updateAgama
     },
     {
         name: 'viewSiswa',
         path: '/siswa/view',
+        beforeEnter : guardMyroute,
         component: viewSiswa
     },
     {
         name: 'addSiswa',
         path: '/siswa/add',
+        beforeEnter : guardMyroute,
         component: addSiswa
     },
     {
         name: 'updateSiswa',
         path: '/siswa/update/:id',
+        beforeEnter : guardMyroute,
         component: updateSiswa
     },
     {
         name: 'infoSiswa',
         path: '/siswa/info/:id',
+        beforeEnter : guardMyroute,
         component: infoSiswa
     },
     {
         name: 'viewAyah',
         path: '/ayah/view',
+        beforeEnter : guardMyroute,
         component: viewAyah
     },
     {
         name: 'addAyah',
         path: '/ayah/add',
+        beforeEnter : guardMyroute,
         component: addAyah
     },
     {
         name: 'updateAyah',
         path: '/ayah/update/:id',
+        beforeEnter : guardMyroute,
         component: updateAyah
     },
     {
         name: 'viewIbu',
         path: '/ibu/view',
+        beforeEnter : guardMyroute,
         component: viewIbu
     },
     {
         name: 'addIbu',
         path: '/ibu/add',
+        beforeEnter : guardMyroute,
         component: addIbu
     },
     {
         name: 'updateIbu',
         path: '/ibu/update/:id',
+        beforeEnter : guardMyroute,
         component: updateIbu
     },
     {
         name: 'viewWali',
         path: '/wali/view',
+        beforeEnter : guardMyroute,
         component: viewWali
     },
     {
         name: 'addWali',
         path: '/wali/add',
+        beforeEnter : guardMyroute,
         component: addWali
     },
     {
         name: 'updateWali',
         path: '/wali/update/:id',
+        beforeEnter : guardMyroute,
         component: updateWali
     },
     {
         name: 'infoSiswaKeluar',
         path: '/siswakeluar/info/:id',
+        beforeEnter : guardMyroute,
         component: infoSiswaKeluar
     },
     {
         name: 'viewSiswaKeluar',
         path: '/siswakeluar/view',
+        beforeEnter : guardMyroute,
         component: viewSiswaKeluar
     },
     {
         name: 'addSiswaKeluar',
         path: '/siswakeluar/add',
+        beforeEnter : guardMyroute,
         component: addSiswaKeluar
     },
     {
         name: 'updateSiswaKeluar',
         path: '/siswakeluar/update/:id',
+        beforeEnter : guardMyroute,
         component: updateSiswaKeluar
     },
 ];
