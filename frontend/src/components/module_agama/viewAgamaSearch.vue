@@ -1,5 +1,5 @@
 <template>
-    <div id="viewAgama">
+    <div id="viewAgamaSearch">
         <Navbar/>
         <Sidebar/>
 
@@ -103,7 +103,7 @@ import Sidebar from './../_layouts/Sidebar.vue'
 import Footer from './../_layouts/Footer.vue'
 
 export default {
-  name: 'viewAgama',
+  name: 'viewAgamaSearch',
   components: {
     Navbar,
     Sidebar,
@@ -117,14 +117,14 @@ export default {
   },
  
   created() {
-    this.viewAgama();    
+    this.viewAgamaBySearch();    
   },
  
   methods: {
     // Get All Products
-    async viewAgama() {
+    async viewAgamaBySearch() {
       try {
-        const response = await axios.get("http://localhost:8800/agama/view");
+        const response = await axios.get(`http://localhost:8800/agama/view/search/${this.$route.params.agama}`);
         this.items = response.data.values;
       } catch (err) {
         console.log(err);

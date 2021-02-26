@@ -31,6 +31,20 @@ exports.viewAgamaById = function(req,res){
     );
 };
 
+// select data agama berdasarkan id
+exports.viewAgamaBySearch = function(req,res){
+    let agama = req.params.agama;
+    connection.query('SELECT * FROM agama WHERE agama LIKE ?', [agama],
+        function(error, rows, field){
+            if(error){
+                connection.log(error);
+            } else {
+                response.ok(rows,res)
+            }
+        }
+    );
+};
+
 // add data agama
 exports.addAgama = function(req,res){
 
