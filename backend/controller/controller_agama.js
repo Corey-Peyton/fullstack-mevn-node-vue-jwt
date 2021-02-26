@@ -33,7 +33,8 @@ exports.viewAgamaById = function(req,res){
 
 // select data agama berdasarkan id
 exports.viewAgamaBySearch = function(req,res){
-    let agama = req.params.agama;
+    let agama_params = req.params.agama;
+    let agama = "%" + agama_params + "%";
     connection.query('SELECT * FROM agama WHERE agama LIKE ?', [agama],
         function(error, rows, field){
             if(error){
