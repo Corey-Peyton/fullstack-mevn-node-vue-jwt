@@ -8,7 +8,15 @@ const loginMiddleware = require('./../middleware/login.js');
 
 // select semua data agama
 exports.viewAgama = function(req,res){
-    connection.query("SELECT * FROM agama", function(error, rows, field){
+    let agama_params = req.query.agama;
+    let agama = "%" + agama_params + "%";
+    let query = ' SELECT * FROM agama WHERE 1+1 ';
+    let param = []
+    if (agama_params && agama_params !='') {
+        query = query + 'AND agama LIKE ?';
+        param.push(agama)
+    }
+    connection.query(query, param, function(error, rows, field){
     if(error){
         connection.log(error);
     } else {
@@ -21,21 +29,6 @@ exports.viewAgama = function(req,res){
 exports.viewAgamaById = function(req,res){
     let id_agama = req.params.id_agama;
     connection.query('SELECT * FROM agama WHERE id_agama = ?', [id_agama],
-        function(error, rows, field){
-            if(error){
-                connection.log(error);
-            } else {
-                response.ok(rows,res)
-            }
-        }
-    );
-};
-
-// select data agama berdasarkan id
-exports.viewAgamaBySearch = function(req,res){
-    let agama_params = req.params.agama;
-    let agama = "%" + agama_params + "%";
-    connection.query('SELECT * FROM agama WHERE agama LIKE ?', [agama],
         function(error, rows, field){
             if(error){
                 connection.log(error);

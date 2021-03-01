@@ -97,7 +97,7 @@ export default {
         this.password_repeat = ''
         this.$router.push("login");
       } catch(e) {
-        this.error = 'Register failed! Invalid Data!',
+        this.error = e.response.data.msg,
         this.username = '',
         this.password = '',
         this.password_repeat = ''

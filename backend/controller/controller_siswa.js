@@ -30,7 +30,7 @@ ORDER BY A.nama_lengkap ASC`, function(error, rows, field){
 // select data siswa berdasarkan id
 exports.viewSiswaById = function(req,res){
     let id_siswa = req.params.id_siswa;
-    connection.query(`SELECT *, DATE_FORMAT(siswa.tgl_lahir, '%Y-%m-%d') AS tgl_lahir FROM siswa 
+    connection.query(`SELECT *, DATE_FORMAT(siswa.tgl_lahir, '%Y-%m-%d') AS tgl_lahir, siswa.jenis_kelamin, siswa.nik, siswa.id_disabilitas, siswa.id_statustinggal FROM siswa
                         INNER JOIN agama ON agama.id_agama = siswa.id_agama
                         INNER JOIN disabilitas ON disabilitas.id_disabilitas = siswa.id_disabilitas
                         INNER JOIN kelurahan ON kelurahan.id_kelurahan = siswa.id_kelurahan
@@ -38,9 +38,9 @@ exports.viewSiswaById = function(req,res){
                         INNER JOIN transportasi ON transportasi.id_transportasi = siswa.id_transportasi
                         INNER JOIN pip ON pip.id_pip = siswa.id_pip
                         INNER JOIN bank ON bank.id_bank = siswa.id_bank
-                        INNER JOIN ayah ON ayah.id_ayah = siswa.id_ayah
-                        INNER JOIN ibu ON ibu.id_ibu = siswa.id_ibu
-                        INNER JOIN wali ON wali.id_wali = siswa.id_wali
+                        LEFT JOIN ayah ON ayah.id_ayah = siswa.id_ayah
+                        LEFT JOIN ibu ON ibu.id_ibu = siswa.id_ibu
+                        LEFT JOIN wali ON wali.id_wali = siswa.id_wali
                         INNER JOIN siswa_masuk ON siswa_masuk.id_siswa = siswa.id_siswa
                         WHERE siswa.id_siswa = ?`, [id_siswa],
         function(error, rows, field){

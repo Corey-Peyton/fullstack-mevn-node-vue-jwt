@@ -39,9 +39,8 @@
                   <input type="text" class="form-control" id="input" v-model="agama" placeholder="Nama Agama">
                   <router-link
                     :to="{ name: 'viewAgamaSearch', params: { agama: agama } }"
-                    class="btn btn-primary"
-                    >Search Agama</router-link
-                    >
+                    class="btn btn-primary">Search Agama
+                  </router-link>
               </div>
               </div>
             </div>

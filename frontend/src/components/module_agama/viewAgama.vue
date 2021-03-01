@@ -37,10 +37,9 @@
             <div class="col-md-6">
               <div class="input-group mb-3 mt-3">
                   <input type="text" class="form-control" id="input" v-model="agama" placeholder="Nama Agama">
-                  <router-link
-                    :to="{ name: 'viewAgamaSearch', params: { agama: agama } }"
+                  <v-btn @click="viewAgama()"
                     class="btn btn-primary"
-                    >Search Agama</router-link
+                    >Search Agama</v-btn
                     >
               </div>
               </div>
@@ -124,7 +123,11 @@ export default {
     // Get All Products
     async viewAgama() {
       try {
-        const response = await axios.get("http://localhost:8800/agama/view");
+        let url = "http://localhost:8800/agama/view";
+        if(this.agama && this.agama !='') {
+          url = url + "?agama="+ this.agama;
+        }
+        const response = await axios.get(url);        
         this.items = response.data.values;
       } catch (err) {
         console.log(err);

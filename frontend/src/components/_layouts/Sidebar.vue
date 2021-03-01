@@ -44,12 +44,6 @@
                   <p>Data Agama</p>
                 </router-link>
               </li>
-              <li class="nav-item">
-                <router-link :to="{name: 'dashboard'}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Data ...</p>
-                </router-link>
-              </li>
             </ul>
           </li>
           <li class="nav-item">

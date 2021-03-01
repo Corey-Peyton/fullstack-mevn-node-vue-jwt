@@ -495,11 +495,12 @@ export default {
         const response = await axios.get(
           `http://localhost:8800/priodiksiswa/view/${this.$route.params.id}`
         );
-        this.id_siswakeluar = response.data.values.[0].id_siswakeluar;
-        this.id_siswa = response.data.values.[0].id_siswa;
-        this.id_jenisalasan = response.data.values.[0].id_jenisalasan;
-        this.tgl_keluar = response.data.values.[0].tgl_keluar;
-        this.keterangan = response.data.values.[0].keterangan;
+        this.id_priodik_siswa = response.data.values.[0].id_priodik_siswa;
+        this.tinggi_badan = response.data.values.[0].tinggi_badan;
+        this.berat_badan = response.data.values.[0].berat_badan;
+        this.jarak_kesekolah = response.data.values.[0].jarak_kesekolah;
+        this.detail_jarak = response.data.values.[0].detail_jarak;
+        this.jml_saudarakandung = response.data.values.[0].jml_saudarakandung;
       } catch (err) {
         console.log(err);
       }

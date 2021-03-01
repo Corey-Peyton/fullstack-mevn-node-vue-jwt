@@ -202,9 +202,6 @@ module.exports = function(app) {
 
     app.route('/siswa/viewtotal').get(loginMiddleware.isLoggedIn, controllerSiswa.viewTotalSiswa);
 
-    // route search
-    app.route('/agama/view/search/:agama').get(loginMiddleware.isLoggedIn, controllerAgama.viewAgamaBySearch);
-
     // route view by ID / Primary Key
     app.route('/agama/view/:id_agama').get(loginMiddleware.isLoggedIn, controllerAgama.viewAgamaById);
     

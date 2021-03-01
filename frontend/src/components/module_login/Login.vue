@@ -108,7 +108,8 @@ export default {
           }
         );
       } catch(e) {
-        this.error = 'Invalid Username/Password!',
+        console.log(e.response.data.msg)
+        this.error = e.response.data.msg,
         this.username = '',
         this.password = ''
       }
