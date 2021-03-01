@@ -7,11 +7,31 @@ var connection = require('./../connection');
 
 // select semua wali
 exports.viewWali = function(req,res){
-    connection.query(`SELECT id_wali, nik, DATE_FORMAT(tgl_lahir, '%d %M %Y') AS tgl_lahir, nama_wali, pendidikan, pekerjaan FROM wali
-                        INNER JOIN pendidikan ON pendidikan.id_pendidikan = wali.id_pendidikan
-                        INNER JOIN pekerjaan ON pekerjaan.id_pekerjaan = wali.id_pekerjaan
-                        INNER JOIN penghasilan ON penghasilan.id_penghasilan = wali.id_penghasilan
-                        INNER JOIN disabilitas ON disabilitas.id_disabilitas = wali.id_disabilitas`, function(error, rows, field){
+    let nama_wali_params = req.query.nama_wali;
+    let nama_wali = "%" + nama_wali_params + "%";
+    let id_pendidikan = req.query.id_pendidikan;
+    let id_pekerjaan = req.query.id_pekerjaan;
+    let query = ` SELECT id_wali, nik, DATE_FORMAT(tgl_lahir, '%d %M %Y') AS tgl_lahir, nama_wali, jenis_kelamin, pendidikan, pekerjaan, wali.id_pendidikan, wali.id_pekerjaan 
+                    FROM wali
+                    INNER JOIN pendidikan ON pendidikan.id_pendidikan = wali.id_pendidikan
+                    INNER JOIN pekerjaan ON pekerjaan.id_pekerjaan = wali.id_pekerjaan
+                    INNER JOIN penghasilan ON penghasilan.id_penghasilan = wali.id_penghasilan
+                    INNER JOIN disabilitas ON disabilitas.id_disabilitas = wali.id_disabilitas 
+                    WHERE 1+1 `;
+    let param = []
+    if (nama_wali_params && nama_wali_params !='') {
+        query = query + 'AND wali.nama_wali LIKE ? ';
+        param.push(nama_wali)
+    }
+    if (id_pendidikan && id_pendidikan !='') {
+        query = query + 'AND wali.id_pendidikan = ? ';
+        param.push(id_pendidikan)
+    }
+    if (id_pekerjaan && id_pekerjaan !='') {
+        query = query + 'AND wali.id_pekerjaan = ? ';
+        param.push(id_pekerjaan)
+    }
+    connection.query(query, param, function(error, rows, field){
     if(error){
         connection.log(error);
     } else {

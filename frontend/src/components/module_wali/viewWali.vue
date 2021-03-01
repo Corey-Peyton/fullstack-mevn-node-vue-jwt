@@ -32,6 +32,31 @@
             <div class="card-header">
             <h5 class="card-title"><router-link :to="{ name: 'addWali' }" class="btn btn-success">Add Wali</router-link></h5>
             </div>
+            <form class="col-12">
+            <div class="row mt-3 justify-content-center">
+            <div class="col-md-9">
+              <div class="input-group mb-3 mt-3">
+                  <input type="text" class="form-control" id="input" v-model="nama_wali" placeholder="Nama Wali">
+                  <select class="form-control col-6" v-model="id_pendidikan">
+                    <option value="">-- Pilih Pendidikan --</option>
+                    <option v-for="itemPendidikan in itemsPendidikan" :key="itemPendidikan.id_pendidikan" v-bind:value="itemPendidikan.id_pendidikan">
+                      {{ itemPendidikan.pendidikan }}
+                    </option>
+                  </select>
+                  <select class="form-control col-6" v-model="id_pekerjaan">
+                    <option value="">-- Pilih Pekerjaan --</option>
+                    <option v-for="itemPekerjaan in itemsPekerjaan" :key="itemPekerjaan.id_pekerjaan" v-bind:value="itemPekerjaan.id_pekerjaan">
+                      {{ itemPekerjaan.pekerjaan }}
+                    </option>
+                  </select>
+                  <v-btn @click="viewWali()"
+                    class="btn btn-primary"
+                    >Search Wali</v-btn
+                    >
+              </div>
+              </div>
+            </div>
+            </form>
             <!-- /.card-header -->
             <div class="card-body">
             <table id="example1" class="table table-bordered table-striped">
@@ -104,18 +129,66 @@ export default {
   data() {
     return {
       items: [],
+      nama_ibu: "",
+      id_pendidikan: "",
+      itemsPendidikan: [],
+      id_pekerjaan: "",
+      itemsPekerjaan: [],
     };
   },
  
   created() {
     this.viewWali();
+    this.viewPendidikan();
+    this.viewPekerjaan();
   },
  
   methods: {
+    async viewPendidikan() {
+        try {
+        const response = await axios.get("http://localhost:8800/pendidikan/view");
+        this.itemsPendidikan = response.data.values;
+        } catch (err) {
+        console.log(err);
+        }
+    },
+    async viewPekerjaan() {
+        try {
+        const response = await axios.get("http://localhost:8800/pekerjaan/view");
+        this.itemsPekerjaan = response.data.values;
+        } catch (err) {
+        console.log(err);
+        }
+    },
     // Get All Wali
     async viewWali() {
       try {
-        const response = await axios.get("http://localhost:8800/wali/view");
+        let url = "http://localhost:8800/wali/view";
+        if(this.nama_wali && this.nama_wali !='') {
+          url = url + "?nama_wali="+ this.nama_wali;
+          if(this.id_pendidikan && this.id_pendidikan !='') {
+            url = url + "&id_pendidikan="+ this.id_pendidikan;
+          }
+          if(this.id_pekerjaan && this.id_pekerjaan !='') {
+            url = url + "&id_pekerjaan="+ this.id_pekerjaan;
+          }
+        } else if(this.nama_wali =='' && this.id_pekerjaan =='') {
+          if(this.id_pendidikan && this.id_pendidikan !='') {
+            url = url + "?id_pendidikan="+ this.id_pendidikan;
+          }
+        } else if(this.nama_wali =='' && this.id_pendidikan =='') {
+          if(this.id_pekerjaan && this.id_pekerjaan !='') {
+            url = url + "?id_pekerjaan="+ this.id_pekerjaan;
+          }
+        } else {
+          if(this.id_pekerjaan && this.id_pekerjaan !='') {
+            url = url + "?id_pekerjaan="+ this.id_pekerjaan;
+          }
+          if(this.id_pendidikan && this.id_pendidikan !='') {
+            url = url + "&id_pendidikan="+ this.id_pendidikan;
+          }
+        }
+        const response = await axios.get(url);
         this.items = response.data.values;
       } catch (err) {
         console.log(err);

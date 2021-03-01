@@ -32,6 +32,30 @@
             <div class="card-header">
             <h5 class="card-title"><router-link :to="{ name: 'addSiswa' }" class="btn btn-success">Add Siswa</router-link></h5>
             </div>
+                        <form class="col-12">
+            <div class="row mt-3 justify-content-center">
+            <div class="col-md-9">
+              <div class="input-group mb-3 mt-3">
+                  <input type="text" class="form-control" id="input" v-model="nama_lengkap" placeholder="Nama Siswa">
+                  <select class="form-control col-6" v-model="jenis_kelamin">
+                    <option  value="">-- Pilih Jenis Kelamin --</option>
+                    <option value="L">Laki - Laki</option>
+                    <option value="P">Perempuan</option>
+                  </select>
+                  <select class="form-control col-6" v-model="id_kelurahan">
+                    <option value="">-- Pilih Kelurahan --</option>
+                    <option v-for="itemKelurahan in itemsKelurahan" :key="itemKelurahan.id_kelurahan" v-bind:value="itemKelurahan.id_kelurahan">
+                      {{ itemKelurahan.kelurahan }}
+                    </option>
+                  </select>
+                  <v-btn @click="viewSiswa()"
+                    class="btn btn-primary"
+                    >Search Siswa</v-btn
+                    >
+              </div>
+              </div>
+            </div>
+            </form>
             <!-- /.card-header -->
             <div class="card-body">
             <table id="example1" class="table table-bordered table-striped">
@@ -107,18 +131,55 @@ export default {
   data() {
     return {
       items: [],
+      jenis_kelamin: "",
+      id_kelurahan: "",
+      itemsKelurahan: [],
     };
   },
  
   created() {
     this.viewSiswa();
+    this.viewKelurahan();
   },
  
   methods: {
+    async viewKelurahan() {
+        try {
+        const response = await axios.get("http://localhost:8800/kelurahan/view");
+        this.itemsKelurahan = response.data.values;
+        } catch (err) {
+        console.log(err);
+        }
+    },
     // Get All Siswa
     async viewSiswa() {
       try {
-        const response = await axios.get("http://localhost:8800/siswa/view");
+        let url = "http://localhost:8800/siswa/view";
+        if(this.nama_lengkap && this.nama_lengkap !='') {
+          url = url + "?nama_lengkap="+ this.nama_lengkap;
+          if(this.jenis_kelamin && this.jenis_kelamin !='') {
+            url = url + "&jenis_kelamin="+ this.jenis_kelamin;
+          }
+          if(this.id_kelurahan && this.id_kelurahan !='') {
+            url = url + "&id_kelurahan="+ this.id_kelurahan;
+          }
+        } else if(this.nama_lengkap =='' && this.id_kelurahan =='') {
+          if(this.jenis_kelamin && this.jenis_kelamin !='') {
+            url = url + "?jenis_kelamin="+ this.jenis_kelamin;
+          }
+        } else if(this.nama_lengkap =='' && this.jenis_kelamin =='') {
+          if(this.id_kelurahan && this.id_kelurahan !='') {
+            url = url + "?id_kelurahan="+ this.id_kelurahan;
+          }
+        } else {
+          if(this.id_kelurahan && this.id_kelurahan !='') {
+            url = url + "?id_kelurahan="+ this.id_kelurahan;
+          }
+          if(this.jenis_kelamin && this.jenis_kelamin !='') {
+            url = url + "&jenis_kelamin="+ this.jenis_kelamin;
+          }
+        }
+        const response = await axios.get(url);
         this.items = response.data.values;
       } catch (err) {
         console.log(err);

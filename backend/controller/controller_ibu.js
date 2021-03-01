@@ -7,11 +7,31 @@ var connection = require('./../connection');
 
 // select semua ibu
 exports.viewIbu = function(req,res){
-    connection.query(`SELECT id_ibu, nik, DATE_FORMAT(tgl_lahir, '%d %M %Y') AS tgl_lahir, nama_ibu, pendidikan, pekerjaan FROM ibu
-                        INNER JOIN pendidikan ON pendidikan.id_pendidikan = ibu.id_pendidikan
-                        INNER JOIN pekerjaan ON pekerjaan.id_pekerjaan = ibu.id_pekerjaan
-                        INNER JOIN penghasilan ON penghasilan.id_penghasilan = ibu.id_penghasilan
-                        INNER JOIN disabilitas ON disabilitas.id_disabilitas = ibu.id_disabilitas`, function(error, rows, field){
+    let nama_ibu_params = req.query.nama_ibu;
+    let nama_ibu = "%" + nama_ibu_params + "%";
+    let id_pendidikan = req.query.id_pendidikan;
+    let id_pekerjaan = req.query.id_pekerjaan;
+    let query = ` SELECT id_ibu, nik, DATE_FORMAT(tgl_lahir, '%d %M %Y') AS tgl_lahir, nama_ibu, pendidikan, pekerjaan, ibu.id_pendidikan, ibu.id_pekerjaan 
+                    FROM ibu
+                    INNER JOIN pendidikan ON pendidikan.id_pendidikan = ibu.id_pendidikan
+                    INNER JOIN pekerjaan ON pekerjaan.id_pekerjaan = ibu.id_pekerjaan
+                    INNER JOIN penghasilan ON penghasilan.id_penghasilan = ibu.id_penghasilan
+                    INNER JOIN disabilitas ON disabilitas.id_disabilitas = ibu.id_disabilitas 
+                    WHERE 1+1 `;
+    let param = []
+    if (nama_ibu_params && nama_ibu_params !='') {
+        query = query + 'AND ibu.nama_ibu LIKE ? ';
+        param.push(nama_ibu)
+    }
+    if (id_pendidikan && id_pendidikan !='') {
+        query = query + 'AND ibu.id_pendidikan = ? ';
+        param.push(id_pendidikan)
+    }
+    if (id_pekerjaan && id_pekerjaan !='') {
+        query = query + 'AND ibu.id_pekerjaan = ? ';
+        param.push(id_pekerjaan)
+    }
+    connection.query(query, param, function(error, rows, field){
     if(error){
         connection.log(error);
     } else {

@@ -7,18 +7,35 @@ var connection = require('./../connection');
 
 // select semua siswa
 exports.viewSiswa = function(req,res){
-    connection.query(`SELECT
-	A.id_siswa, A.nama_lengkap, A.jenis_kelamin, CONCAT(A.tmp_lahir, ", ", DATE_FORMAT(A.tgl_lahir, "%d-%m-%Y")) AS tempat_tgl_lahir,
-	B.nama_ayah, E.nama_ibu, f.nama_wali,
-	CONCAT(A.alamat_lengkap, " dusun ", A.nama_dusun, " RT ", A.no_rt, " RW ", A.no_rw, " kelurahan ", C.kelurahan, " Kecamatan ", D.kecamatan) AS alamat_lengkap_banget
-FROM siswa A
-	LEFT JOIN ayah B ON B.id_ayah=A.id_ayah
-	INNER JOIN kelurahan C ON A.id_kelurahan=C.id_kelurahan
-	INNER JOIN kecamatan D ON C.id_kecamatan=D.id_kecamatan
-	LEFT JOIN ibu E ON A.id_ibu=E.id_ibu
-    LEFT JOIN wali F ON A.id_wali=F.id_wali
-WHERE A.id_siswa NOT IN (SELECT id_siswa FROM siswa_keluar)
-ORDER BY A.nama_lengkap ASC`, function(error, rows, field){
+    let nama_lengkap_params = req.query.nama_lengkap;
+    let nama_lengkap = "%" + nama_lengkap_params + "%";
+    let jenis_kelamin = req.query.jenis_kelamin;
+    let id_kelurahan = req.query.id_kelurahan;
+    let query = ` SELECT
+                        A.id_siswa, A.nama_lengkap, A.jenis_kelamin, CONCAT(A.tmp_lahir, ", ", DATE_FORMAT(A.tgl_lahir, "%d-%m-%Y")) AS tempat_tgl_lahir, A.id_kelurahan,
+                        B.nama_ayah, E.nama_ibu, f.nama_wali,
+                        CONCAT(A.alamat_lengkap, " dusun ", A.nama_dusun, " RT ", A.no_rt, " RW ", A.no_rw, " kelurahan ", C.kelurahan, " Kecamatan ", D.kecamatan) AS alamat_lengkap_banget
+                    FROM siswa A
+                        LEFT JOIN ayah B ON B.id_ayah=A.id_ayah
+                        INNER JOIN kelurahan C ON A.id_kelurahan=C.id_kelurahan
+                        INNER JOIN kecamatan D ON C.id_kecamatan=D.id_kecamatan
+                        LEFT JOIN ibu E ON A.id_ibu=E.id_ibu
+                        LEFT JOIN wali F ON A.id_wali=F.id_wali
+                    WHERE A.id_siswa NOT IN (SELECT id_siswa FROM siswa_keluar) `;
+    let param = []
+    if (nama_lengkap_params && nama_lengkap_params !='') {
+        query = query + 'AND A.nama_lengkap LIKE ? ';
+        param.push(nama_lengkap)
+    }
+    if (jenis_kelamin && jenis_kelamin !='') {
+        query = query + 'AND A.jenis_kelamin = ? ';
+        param.push(jenis_kelamin)
+    }
+    if (id_kelurahan && id_kelurahan!='') {
+        query = query + 'AND A.id_kelurahan = ? ';
+        param.push(id_kelurahan)
+    }
+    connection.query(query, param, function(error, rows, field){
     if(error){
         connection.log(error);
     } else {
