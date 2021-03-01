@@ -1,6 +1,5 @@
 import Dashboard from './components/Dashboard.vue'
 import viewAgama from './components/module_agama/viewAgama.vue'
-import viewAgamaSearch from './components/module_agama/viewAgamaSearch.vue'
 import addAgama from './components/module_agama/addAgama.vue'
 import updateAgama from './components/module_agama/updateAgama.vue'
 import viewSiswa from './components/module_siswa/viewSiswa.vue'
@@ -76,12 +75,6 @@ const routes = [
         path: '/agama/view',
         beforeEnter : guardMyroute,
         component: viewAgama
-    },
-    {
-        name: 'viewAgamaSearch',
-        path: '/agama/view/search/:agama',
-        beforeEnter : guardMyroute,
-        component: viewAgamaSearch
     },
     {
         name: 'addAgama',
