@@ -32,6 +32,30 @@
             <div class="card-header">
             <h5 class="card-title"><router-link :to="{ name: 'addSiswaKeluar' }" class="btn btn-success">Add Siswa Keluar</router-link></h5>
             </div>
+            <form class="col-12">
+            <div class="row mt-3 justify-content-center">
+            <div class="col-md-9">
+              <div class="input-group mb-3 mt-3">
+                  <input type="text" class="form-control" id="input" v-model="nama_lengkap" placeholder="Nama Siswa">
+                  <select class="form-control col-6" v-model="jenis_kelamin">
+                    <option value="">-- Pilih Jenis Kelamin --</option>
+                    <option value="L">Laki - Laki</option>
+                    <option value="P">Perempuan</option>
+                  </select>
+                  <select class="form-control col-6" v-model="id_jenisalasan">
+                    <option value="">-- Pilih Jenis Alasan --</option>
+                    <option v-for="itemAlasan in itemsAlasan" :key="itemAlasan.id_jenisalasan" v-bind:value="itemAlasan.id_jenisalasan">
+                      {{ itemAlasan.alasan }}
+                    </option>
+                  </select>
+                  <v-btn @click="viewSiswaKeluar()"
+                    class="btn btn-primary"
+                    >Search Siswa Keluar</v-btn
+                    >
+              </div>
+              </div>
+            </div>
+            </form>
             <!-- /.card-header -->
             <div class="card-body">
             <table id="example1" class="table table-bordered table-striped">
@@ -103,18 +127,55 @@ export default {
   data() {
     return {
       items: [],
+      jenis_kelamin: "",
+      id_jenisalasan: "",
+      itemsAlasan: [],
     };
   },
  
   created() {
-    this.viewSiswa();
+    this.viewSiswaKeluar();
+    this.viewAlasan();
   },
  
   methods: {
+    async viewAlasan() {
+        try {
+        const response = await axios.get("http://localhost:8800/jenisalasan/view");
+        this.itemsAlasan = response.data.values;
+        } catch (err) {
+        console.log(err);
+        }
+    },
     // Get All Siswa
-    async viewSiswa() {
+    async viewSiswaKeluar() {
       try {
-        const response = await axios.get("http://localhost:8800/siswakeluar/view");
+        let url = "http://localhost:8800/siswakeluar/view";
+        if(this.nama_lengkap && this.nama_lengkap !='') {
+          url = url + "?nama_lengkap="+ this.nama_lengkap;
+          if(this.jenis_kelamin && this.jenis_kelamin !='') {
+            url = url + "&jenis_kelamin="+ this.jenis_kelamin;
+          }
+          if(this.id_jenisalasan && this.id_jenisalasan !='') {
+            url = url + "&id_jenisalasan="+ this.id_jenisalasan;
+          }
+        } else if(this.nama_lengkap =='' && this.id_jenisalasan =='') {
+          if(this.jenis_kelamin && this.jenis_kelamin !='') {
+            url = url + "?jenis_kelamin="+ this.jenis_kelamin;
+          }
+        } else if(this.nama_lengkap =='' && this.jenis_kelamin =='') {
+          if(this.id_jenisalasan && this.id_jenisalasan !='') {
+            url = url + "?id_jenisalasan="+ this.id_jenisalasan;
+          }
+        } else {
+          if(this.id_jenisalasan && this.id_jenisalasan !='') {
+            url = url + "?id_jenisalasan="+ this.id_jenisalasan;
+          }
+          if(this.jenis_kelamin && this.jenis_kelamin !='') {
+            url = url + "&jenis_kelamin="+ this.jenis_kelamin;
+          }
+        }
+        const response = await axios.get(url);
         this.items = response.data.values;
       } catch (err) {
         console.log(err);

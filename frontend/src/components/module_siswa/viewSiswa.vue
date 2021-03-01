@@ -32,7 +32,7 @@
             <div class="card-header">
             <h5 class="card-title"><router-link :to="{ name: 'addSiswa' }" class="btn btn-success">Add Siswa</router-link></h5>
             </div>
-                        <form class="col-12">
+            <form class="col-12">
             <div class="row mt-3 justify-content-center">
             <div class="col-md-9">
               <div class="input-group mb-3 mt-3">

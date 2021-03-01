@@ -7,10 +7,29 @@ var connection = require('./../connection');
 
 // select semua siswa keluar
 exports.viewSiswaKeluar = function(req,res){
-    connection.query(`SELECT *, DATE_FORMAT(siswa.tgl_lahir, '%Y-%m-%d') AS 
-    tgl_lahir FROM siswa_keluar
+    let nama_lengkap_params = req.query.nama_lengkap;
+    let nama_lengkap = "%" + nama_lengkap_params + "%";
+    let jenis_kelamin = req.query.jenis_kelamin;
+    let id_jenisalasan = req.query.id_jenisalasan;
+    let query = ` SELECT *, DATE_FORMAT(siswa.tgl_lahir, '%Y-%m-%d') AS 
+                        tgl_lahir FROM siswa_keluar
                         LEFT JOIN siswa ON siswa_keluar.id_siswa = siswa.id_siswa
-                        INNER JOIN jenis_alasan ON jenis_alasan.id_jenisalasan = siswa_keluar.id_jenisalasan`, function(error, rows, field){
+                        INNER JOIN jenis_alasan ON jenis_alasan.id_jenisalasan = siswa_keluar.id_jenisalasan
+                        WHERE 1+1 `;
+    let param = []
+    if (nama_lengkap_params && nama_lengkap_params !='') {
+        query = query + 'AND siswa.nama_lengkap LIKE ? ';
+        param.push(nama_lengkap)
+    }
+    if (jenis_kelamin && jenis_kelamin !='') {
+        query = query + 'AND siswa.jenis_kelamin = ? ';
+        param.push(jenis_kelamin)
+    }
+    if (id_jenisalasan && id_jenisalasan!='') {
+        query = query + 'AND siswa_keluar.id_jenisalasan = ? ';
+        param.push(id_jenisalasan)
+    }
+    connection.query(query, param, function(error, rows, field){
     if(error){
         connection.log(error);
     } else {
