@@ -7,11 +7,31 @@ var connection = require('./../connection');
 
 // select semua data ayah
 exports.viewAyah = function(req,res){
-    connection.query(`SELECT id_ayah, nik, DATE_FORMAT(tgl_lahir, '%d %M %Y') AS tgl_lahir, nama_ayah, pendidikan, pekerjaan FROM ayah
-                        INNER JOIN pendidikan ON pendidikan.id_pendidikan = ayah.id_pendidikan
-                        INNER JOIN pekerjaan ON pekerjaan.id_pekerjaan = ayah.id_pekerjaan
-                        INNER JOIN penghasilan ON penghasilan.id_penghasilan = ayah.id_penghasilan
-                        INNER JOIN disabilitas ON disabilitas.id_disabilitas = ayah.id_disabilitas`, function(error, rows, field){
+    let nama_ayah_params = req.query.nama_ayah;
+    let nama_ayah = "%" + nama_ayah_params + "%";
+    let id_pendidikan = req.query.id_pendidikan;
+    let id_pekerjaan = req.query.id_pekerjaan;
+    let query = ` SELECT id_ayah, nik, DATE_FORMAT(tgl_lahir, '%d %M %Y') AS tgl_lahir, nama_ayah, pendidikan, pekerjaan, ayah.id_pendidikan, ayah.id_pekerjaan 
+                    FROM ayah
+                    INNER JOIN pendidikan ON pendidikan.id_pendidikan = ayah.id_pendidikan
+                    INNER JOIN pekerjaan ON pekerjaan.id_pekerjaan = ayah.id_pekerjaan
+                    INNER JOIN penghasilan ON penghasilan.id_penghasilan = ayah.id_penghasilan
+                    INNER JOIN disabilitas ON disabilitas.id_disabilitas = ayah.id_disabilitas 
+                    WHERE 1+1 `;
+    let param = []
+    if (nama_ayah_params && nama_ayah_params !='') {
+        query = query + 'AND ayah.nama_ayah LIKE ? ';
+        param.push(nama_ayah)
+    }
+    if (id_pendidikan && id_pendidikan !='') {
+        query = query + 'AND ayah.id_pendidikan = ? ';
+        param.push(id_pendidikan)
+    }
+    if (id_pekerjaan && id_pekerjaan !='') {
+        query = query + 'AND ayah.id_pekerjaan = ? ';
+        param.push(id_pekerjaan)
+    }
+    connection.query(query, param, function(error, rows, field){
     if(error){
         connection.log(error);
     } else {
