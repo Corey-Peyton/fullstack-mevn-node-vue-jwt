@@ -119,6 +119,7 @@ module.exports = function(app) {
             }
     
             if (bResult) {
+                // header, payload, signature
                 const token = jwt.sign({
                     username: result[0].username,
                     userId: result[0].id
