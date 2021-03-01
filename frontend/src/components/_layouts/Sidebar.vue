@@ -21,13 +21,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item">
-              <router-link :to="{name: 'dashboard'}" class="nav-link">
-                <i class="nav-icon fas fa-home"></i>
-                <p>
-                  Home
-                  <!-- <span class="right badge badge-danger">New</span> -->
-                </p>
-              </router-link>
+              <a :href="$router.resolve({name: 'dashboard'}).href" class="nav-link"><i class="nav-icon fas fa-home"></i> Data Home</a>
             </li>
             <li class="nav-item">
             <a href="#" class="nav-link">
@@ -39,10 +33,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <router-link :to="{name: 'viewAgama'}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Data Agama</p>
-                </router-link>
+                <a :href="$router.resolve({name: 'viewAgama'}).href" class="nav-link"><i class="far fa-circle nav-icon"></i> Data Agama</a>
               </li>
             </ul>
           </li>
@@ -56,42 +47,21 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <router-link :to="{name: 'viewAyah'}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Data Ayah</p>
-                </router-link>
+                <a :href="$router.resolve({name: 'viewAyah'}).href" class="nav-link"><i class="far fa-circle nav-icon"></i> Data Ayah</a>
               </li>
               <li class="nav-item">
-                <router-link :to="{name: 'viewIbu'}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Data Ibu</p>
-                </router-link>
+                <a :href="$router.resolve({name: 'viewIbu'}).href" class="nav-link"><i class="far fa-circle nav-icon"></i> Data Ibu</a>
               </li>
               <li class="nav-item">
-                <router-link :to="{name: 'viewWali'}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Data Wali</p>
-                </router-link>
+                <a :href="$router.resolve({name: 'viewWali'}).href" class="nav-link"><i class="far fa-circle nav-icon"></i> Data Wali</a>
               </li>
             </ul>
           </li>
           <li class="nav-item">
-            <router-link :to="{name: 'viewSiswa'}" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                Data Siswa
-                <!-- <span class="right badge badge-danger">New</span> -->
-              </p>
-            </router-link>
+            <a :href="$router.resolve({name: 'viewSiswa'}).href" class="nav-link"><i class="nav-icon fas fa-users"></i> Data Siswa</a>
           </li>
           <li class="nav-item">
-            <router-link :to="{name: 'viewSiswaKeluar'}" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                Pendaftaran Siswa Keluar
-                <!-- <span class="right badge badge-danger">New</span> -->
-              </p>
-            </router-link>
+            <a :href="$router.resolve({name: 'viewSiswaKeluar'}).href" class="nav-link"><i class="nav-icon fas fa-users"></i> Data Siswa Keluar</a>
           </li>
         </ul>
       </nav>
