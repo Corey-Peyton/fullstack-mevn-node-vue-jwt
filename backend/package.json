@@ -4,7 +4,7 @@
   "description": "Rest API data diri siswa",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "serve": "node index.js"
   },
   "keywords": [],
@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "chai": "^4.3.0",
+    "chai-http": "^4.3.0",
     "mocha": "^8.3.0"
   }
 }
