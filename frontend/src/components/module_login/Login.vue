@@ -84,7 +84,7 @@ export default {
     return {
       username: '',
       password: '',
-      error: ''
+      error: '',
     };
   },
   
