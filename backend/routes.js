@@ -45,6 +45,7 @@ module.exports = function(app) {
     });
 
     app.route('/sign-up').post(userMiddleware.validateRegister, controllerRegister.registerUser);
+    app.route('/users/delete/:username').delete(controllerRegister.deleteUser);
 
     // router.post(loginMiddleware.isLoggedIn, '/login', (req, res, next) => {});
     // routes/router.js
