@@ -10,10 +10,10 @@ const conn = mysql.createConnection({
 });
 
 // test koneksi
-conn.connect((err) =>{
-    if(err) throw err;
-    console.log("MySQL Connected!");
-});
+// conn.connect((err) =>{
+//     if(err) throw err;
+//     console.log("MySQL Connected!");
+// });
 
 // export variabel conn utk digunakan pada file lain
 module.exports = conn;

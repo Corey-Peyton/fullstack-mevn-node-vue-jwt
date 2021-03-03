@@ -56,7 +56,7 @@ module.exports = function(app) {
 
     // route view
     // app.route('/agama/view').get(loginMiddleware.isLoggedIn, controllerAgama.viewAgama);
-    app.route('/agama/view').get(controllerAgama.viewAgama);
+    app.route('/agama/view').get(loginMiddleware.isLoggedIn, controllerAgama.viewAgama);
 
     app.route('/ayah/view').get(loginMiddleware.isLoggedIn, controllerAyah.viewAyah);
 
