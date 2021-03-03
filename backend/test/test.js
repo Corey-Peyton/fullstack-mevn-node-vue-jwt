@@ -44,15 +44,18 @@ describe('Test Login User', () => {
 describe('Test API Agama', () => {
 
     it('GET All Data Agama', (done) => {           
-        chai.request(app).get('/agama/view').set('Authorization', 'Bearer' + token).end((err, res) => {  
+        chai.request(app).get('/agama/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
             expect(err).to.be.null,
             expect(res).to.have.be.status(200)
             done();
         })
     })
 
-    it('GET Agama by ID (belum solved)', (done) => {
-        chai.request(app).get('/agama/view').set('Authorization', 'Bearer' + token).end((err, res) => {  
+    it('GET Agama by ID', (done) => {
+        let id_agama = 1;
+        chai.request(app).get(`/agama/view/${id_agama}`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
+            // console.log(res.body); 
             expect(err).to.be.null,
             expect(res).to.have.be.status(200)
             done();
