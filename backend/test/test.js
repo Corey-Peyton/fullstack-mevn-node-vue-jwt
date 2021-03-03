@@ -41,7 +41,7 @@ describe('Test Login User', () => {
 
 });
 
-describe('Test API Agama', () => {
+describe('Test API Data Agama', () => {
 
     it('GET All Data Agama', (done) => {           
         chai.request(app).get('/agama/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
@@ -52,10 +52,75 @@ describe('Test API Agama', () => {
         })
     })
 
-    it('GET Agama by ID', (done) => {
+    it('GET Data Agama by ID', (done) => {
         let id_agama = 1;
         chai.request(app).get(`/agama/view/${id_agama}`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
             // console.log(res.body); 
+            expect(err).to.be.null,
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+});
+
+describe('Test API Data Ayah', () => {
+
+    it('GET All Data Ayah', (done) => {           
+        chai.request(app).get('/ayah/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(err).to.be.null,
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+});
+
+describe('Test API Data Ibu', () => {
+
+    it('GET All Data Ibu', (done) => {           
+        chai.request(app).get('/ibu/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(err).to.be.null,
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+});
+
+describe('Test API Data Wali', () => {
+
+    it('GET All Data Wali', (done) => {           
+        chai.request(app).get('/wali/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(err).to.be.null,
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+});
+
+describe('Test API Data Siswa', () => {
+
+    it('GET All Data Siswa', (done) => {           
+        chai.request(app).get('/siswa/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(err).to.be.null,
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+});
+
+describe('Test API Data Siswa Keluar', () => {
+
+    it('GET All Data Siswa Keluar', (done) => {           
+        chai.request(app).get('/siswakeluar/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
             expect(err).to.be.null,
             expect(res).to.have.be.status(200)
             done();
