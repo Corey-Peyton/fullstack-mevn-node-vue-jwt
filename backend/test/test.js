@@ -1058,3 +1058,23 @@ describe('Test API GET Data Kelurahan', () => {
     })
 
 })
+
+describe('Test API GET Data Pekerjaan', () => {
+
+    it('GET All Data Pekerjaan but User Not Login', (done) => {           
+        chai.request(app).get('/pekerjaan/view').end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('GET All Data Pekerjaan', (done) => {           
+        chai.request(app).get('/pekerjaan/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+})
