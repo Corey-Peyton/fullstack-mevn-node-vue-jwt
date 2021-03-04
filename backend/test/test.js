@@ -232,6 +232,17 @@ describe('Test API Data Agama', () => {
         })
     })
 
+    it('DELETE Data Agama but User Not Login', (done) => {
+        let id_agama = 1;
+        chai.request(app).delete(`/agama/delete/${id_agama}`)
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(err).to.be.null,
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
     it('DELETE Data Agama', (done) => {
         let id_agama = 1;
         chai.request(app).delete(`/agama/delete/${id_agama}`).set('Authorization', `Bearer ${token}`)
