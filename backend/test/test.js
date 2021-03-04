@@ -1019,3 +1019,22 @@ describe('Test API GET Data Disabilitas', () => {
 
 })
 
+describe('Test API GET Data Jenis Alasan', () => {
+
+    it('GET All Data Jenis Alasan but User Not Login', (done) => {           
+        chai.request(app).get('/jenisalasan/view').end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('GET All Data Jenis Alasan', (done) => {           
+        chai.request(app).get('/jenisalasan/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+})
