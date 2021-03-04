@@ -1038,3 +1038,23 @@ describe('Test API GET Data Jenis Alasan', () => {
     })
 
 })
+
+describe('Test API GET Data Kelurahan', () => {
+
+    it('GET All Data Kelurahan but User Not Login', (done) => {           
+        chai.request(app).get('/kelurahan/view').end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('GET All Data Kelurahan', (done) => {           
+        chai.request(app).get('/kelurahan/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+})
