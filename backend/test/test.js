@@ -1158,3 +1158,23 @@ describe('Test API GET Data Priodik Siswa', () => {
     })
 
 })
+
+describe('Test API GET Data Siswa Masuk', () => {
+
+    it('GET All Data Siswa Masuk but User Not Login', (done) => {
+        chai.request(app).get('/siswamasuk/view').end((err, res) => {
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('GET All Data Siswa Masuk', (done) => {           
+        chai.request(app).get('/siswamasuk/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+})
