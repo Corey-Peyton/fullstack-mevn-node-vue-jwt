@@ -1098,3 +1098,23 @@ describe('Test API GET Data Pendidikan', () => {
     })
 
 })
+
+describe('Test API GET Data Penghasilan', () => {
+
+    it('GET All Data Penghasilan but User Not Login', (done) => {           
+        chai.request(app).get('/penghasilan/view').end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('GET All Data Penghasilan', (done) => {           
+        chai.request(app).get('/penghasilan/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+})
