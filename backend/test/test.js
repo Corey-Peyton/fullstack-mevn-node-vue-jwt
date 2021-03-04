@@ -200,6 +200,26 @@ describe('Test API Data Ayah', () => {
         })
     })
 
+    it('GET Data Ayah by ID but User Not Login', (done) => {
+        let id_ayah = "PRM030221001";
+        chai.request(app).get(`/ayah/view/${id_ayah}`).end((err, res) => { 
+            // console.log(res.body); 
+            expect(err).to.be.null,
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('GET Data Ayah by ID', (done) => {
+        let id_ayah = "PRM030221001";
+        chai.request(app).get(`/ayah/view/${id_ayah}`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
+            // console.log(res.body); 
+            expect(err).to.be.null,
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
 });
 
 describe('Test API Data Ibu', () => {
@@ -216,6 +236,26 @@ describe('Test API Data Ibu', () => {
     it('GET All Data Ibu', (done) => {           
         chai.request(app).get('/ibu/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
             // console.log(res.body);
+            expect(err).to.be.null,
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('GET Data Ibu by ID but User Not Login', (done) => {
+        let id_ibu = "PRF030221001";
+        chai.request(app).get(`/ibu/view/${id_ibu}`).end((err, res) => { 
+            // console.log(res.body); 
+            expect(err).to.be.null,
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('GET Data Ibu by ID', (done) => {
+        let id_ibu = "PRF030221001";
+        chai.request(app).get(`/ibu/view/${id_ibu}`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
+            // console.log(res.body); 
             expect(err).to.be.null,
             expect(res).to.have.be.status(200)
             done();
@@ -244,6 +284,26 @@ describe('Test API Data Wali', () => {
         })
     })
 
+    it('GET Data Wali by ID but User Not Login', (done) => {
+        let id_wali = "PRW030221001";
+        chai.request(app).get(`/wali/view/${id_wali}`).end((err, res) => { 
+            // console.log(res.body); 
+            expect(err).to.be.null,
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('GET Data Wali by ID', (done) => {
+        let id_wali = "PRW030221001";
+        chai.request(app).get(`/wali/view/${id_wali}`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
+            // console.log(res.body); 
+            expect(err).to.be.null,
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
 });
 
 describe('Test API Data Siswa', () => {
@@ -266,6 +326,26 @@ describe('Test API Data Siswa', () => {
         })
     })
 
+    it('GET Data Siswa by ID but User Not Login', (done) => {
+        let id_siswa = "SSW050221001";
+        chai.request(app).get(`/siswa/view/${id_siswa}`).end((err, res) => { 
+            // console.log(res.body); 
+            expect(err).to.be.null,
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('GET Data Siswa by ID', (done) => {
+        let id_siswa = "SSW050221001";
+        chai.request(app).get(`/siswa/view/${id_siswa}`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
+            // console.log(res.body); 
+            expect(err).to.be.null,
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
 });
 
 describe('Test API Data Siswa Keluar', () => {
@@ -282,6 +362,26 @@ describe('Test API Data Siswa Keluar', () => {
     it('GET All Data Siswa Keluar', (done) => {           
         chai.request(app).get('/siswakeluar/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
             // console.log(res.body);
+            expect(err).to.be.null,
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('GET Data Siswa Keluar by ID but User Not Login', (done) => {
+        let id_siswakeluar = "SWK050221001";
+        chai.request(app).get(`/siswa/view/${id_siswakeluar}`).end((err, res) => { 
+            // console.log(res.body); 
+            expect(err).to.be.null,
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('GET Data Siswa Keluar by ID', (done) => {
+        let id_siswakeluar = "SWK050221001";
+        chai.request(app).get(`/siswa/view/${id_siswakeluar}`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
+            // console.log(res.body); 
             expect(err).to.be.null,
             expect(res).to.have.be.status(200)
             done();
