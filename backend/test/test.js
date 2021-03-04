@@ -1078,3 +1078,23 @@ describe('Test API GET Data Pekerjaan', () => {
     })
 
 })
+
+describe('Test API GET Data Pendidikan', () => {
+
+    it('GET All Data Pendidikan but User Not Login', (done) => {           
+        chai.request(app).get('/pendidikan/view').end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('GET All Data Pendidikan', (done) => {           
+        chai.request(app).get('/pendidikan/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+})
