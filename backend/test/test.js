@@ -989,7 +989,7 @@ describe('Test API GET Data Bank', () => {
         })
     })
 
-    it('GET All Data Bank Keluar', (done) => {           
+    it('GET All Data Bank', (done) => {           
         chai.request(app).get('/bank/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
             // console.log(res.body);
             expect(res).to.have.be.status(200)
@@ -998,3 +998,24 @@ describe('Test API GET Data Bank', () => {
     })
 
 })
+
+describe('Test API GET Data Disabilitas', () => {
+
+    it('GET All Data Disabilitas but User Not Login', (done) => {           
+        chai.request(app).get('/disabilitas/view').end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('GET All Data Disabilitas', (done) => {           
+        chai.request(app).get('/disabilitas/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+})
+
