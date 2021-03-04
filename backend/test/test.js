@@ -711,7 +711,7 @@ describe('Test API Data Siswa', () => {
                 'no_hp': '08888888',
                 'email': 'k@gmail.com'
             })
-            .end((err, res) => { 
+            .end((err, res) => {
             // console.log(res.body); 
             expect(res).to.have.be.status(401)
             done();
@@ -969,7 +969,7 @@ describe('Test API Data Siswa Keluar', () => {
 
     it('DELETE Data Siswa Keluar', (done) => {
         let id_siswakeluar = 'SWK050221005';
-        chai.request(app).delete(`/siswa/delete/${id_siswakeluar}`).set('Authorization', `Bearer ${token}`)
+        chai.request(app).delete(`/siswakeluar/delete/${id_siswakeluar}`).set('Authorization', `Bearer ${token}`)
             .end((err, res) => { 
             // console.log(res.body);
             expect(res).to.have.be.status(200)
@@ -978,3 +978,23 @@ describe('Test API Data Siswa Keluar', () => {
     })
 
 });
+
+describe('Test API GET Data Bank', () => {
+
+    it('GET All Data Bank but User Not Login', (done) => {           
+        chai.request(app).get('/bank/view').end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('GET All Data Bank Keluar', (done) => {           
+        chai.request(app).get('/bank/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+})
