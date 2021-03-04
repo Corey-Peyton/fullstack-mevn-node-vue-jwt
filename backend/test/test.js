@@ -1178,3 +1178,23 @@ describe('Test API GET Data Siswa Masuk', () => {
     })
 
 })
+
+describe('Test API GET Data Status Tinggal', () => {
+
+    it('GET All Data Status Tinggal but User Not Login', (done) => {
+        chai.request(app).get('/statustinggal/view').end((err, res) => {
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('GET All Data Status Tinggal', (done) => {           
+        chai.request(app).get('/statustinggal/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+})
