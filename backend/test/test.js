@@ -1198,3 +1198,23 @@ describe('Test API GET Data Status Tinggal', () => {
     })
 
 })
+
+describe('Test API GET Data Transportasi', () => {
+
+    it('GET All Data Transportasi but User Not Login', (done) => {
+        chai.request(app).get('/transportasi/view').end((err, res) => {
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('GET All Data Transportasi', (done) => {
+        chai.request(app).get('/transportasi/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+})
