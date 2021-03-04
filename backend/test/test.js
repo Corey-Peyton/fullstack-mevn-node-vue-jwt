@@ -1139,18 +1139,18 @@ describe('Test API GET Data PIP', () => {
 
 })
 
-describe('Test API GET Data PIP', () => {
+describe('Test API GET Data Priodik Siswa', () => {
 
-    it('GET All Data PIP but User Not Login', (done) => {
-        chai.request(app).get('/pip/view').end((err, res) => {
+    it('GET All Data Priodik Siswa but User Not Login', (done) => {
+        chai.request(app).get('/priodiksiswa/view').end((err, res) => {
             // console.log(res.body);
             expect(res).to.have.be.status(401)
             done();
         })
     })
 
-    it('GET All Data PIP', (done) => {           
-        chai.request(app).get('/pip/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+    it('GET All Data Priodik Siswa', (done) => {           
+        chai.request(app).get('/priodiksiswa/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
             // console.log(res.body);
             expect(res).to.have.be.status(200)
             done();
