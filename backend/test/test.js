@@ -7,352 +7,348 @@ chai.use(chaiHttp);
 
 let token = '';
 
-describe('Test Endpoint API Backend', () => {
+describe('Test Register User', () => {
 
-    describe('Test Register User', () => {
-
-        it('User already in database', (done) => {
-            chai.request(app).post('/sign-up')
-                .send({
-                    'username': 'permadi',
-                    'password': 'permadi',
-                    'password_repeat': 'permadi'
-                })
-                .end((err, res) => {
-                    expect(res).to.have.be.status(409)
-                    done();
-                })
-        })
-    
-        it('Username less than 3 character', (done) => {
-            chai.request(app).post('/sign-up')
-                .send({
-                    'username': 'te',
-                    'password': 'testtest',
-                    'password_repeat': 'testtest'
-                })
-                .end((err, res) => {
-                    expect(res).to.have.be.status(400)
-                    done();
-                })
-        })
-    
-        it('Password less than 6 character', (done) => {
-            chai.request(app).post('/sign-up')
-                .send({
-                    'username': 'test',
-                    'password': 'test',
-                    'password_repeat': 'test'
-                })
-                .end((err, res) => {
-                    expect(res).to.have.be.status(400)
-                    done();
-                })
-        })
-    
-        it('Password and repeat password dont match', (done) => {
-            chai.request(app).post('/sign-up')
-                .send({
-                    'username': 'test',
-                    'password': 'testtest',
-                    'password_repeat': 'test'
-                })
-                .end((err, res) => {
-                    expect(res).to.have.be.status(400)
-                    done();
-                })
-        })
-    
-        it('User successfully register', (done) => {
-            chai.request(app).post('/sign-up')
-                .send({
-                    'username': 'test',
-                    'password': 'testtest',
-                    'password_repeat': 'testtest'
-                })
-                .end((err, res) => {
-                    expect(res).to.have.be.status(201)
-                    done();
-                })
-        })
-    
-        it('Delete user by username', (done) => {
-            let username = "test";
-            chai.request(app).delete(`/users/delete/${username}`).end((err, res) => { 
-                // console.log(res.body); 
-                expect(res).to.have.be.status(200)
+    it('User already in database', (done) => {
+        chai.request(app).post('/sign-up')
+            .send({
+                'username': 'permadi',
+                'password': 'permadi',
+                'password_repeat': 'permadi'
+            })
+            .end((err, res) => {
+                expect(res).to.have.be.status(409)
                 done();
             })
-        })
-    
-    });
+    })
 
-    describe('Test Login User', () => { 
+    it('Username less than 3 character', (done) => {
+        chai.request(app).post('/sign-up')
+            .send({
+                'username': 'te',
+                'password': 'testtest',
+                'password_repeat': 'testtest'
+            })
+            .end((err, res) => {
+                expect(res).to.have.be.status(400)
+                done();
+            })
+    })
 
-        it('User should be in database', (done) => {
-            chai.request(app).post('/login')
-                .send({
-                    'username': 'permadi',
-                    'password': 'permadi'
-                })
-                .end((err, res) => {
-                    // console.log(res.body);
-                    // console.log(res.body.token);
-                    expect(res.body).to.have.property('token');
-                    token = res.body.token;
-                    expect(res).to.have.be.status(200)
-                    done();
-                })
-        })
-    
-        it('User not in database', (done) => {
-            chai.request(app).post('/login')
-                .send({
-                    'username': '.',
-                    'password': '.'
-                })
-                .end((err, res) => {
-                    expect(res).to.have.be.status(401)
-                    done();
-                })
-        })
-    
-        it('User in database but wrong password', (done) => {
-            chai.request(app).post('/login')
-                .send({
-                    'username': 'permadi',
-                    'password': 'permadi2'
-                })
-                .end((err, res) => {
-                    expect(res).to.have.be.status(401)
-                    done();
-                })
-        })
-    
-    });
+    it('Password less than 6 character', (done) => {
+        chai.request(app).post('/sign-up')
+            .send({
+                'username': 'test',
+                'password': 'test',
+                'password_repeat': 'test'
+            })
+            .end((err, res) => {
+                expect(res).to.have.be.status(400)
+                done();
+            })
+    })
 
-    describe('Test API Data Agama', () => {
+    it('Password and repeat password dont match', (done) => {
+        chai.request(app).post('/sign-up')
+            .send({
+                'username': 'test',
+                'password': 'testtest',
+                'password_repeat': 'test'
+            })
+            .end((err, res) => {
+                expect(res).to.have.be.status(400)
+                done();
+            })
+    })
 
-        it('GET All Data Agama but User Not Login', (done) => {           
-            chai.request(app).get('/agama/view').end((err, res) => {  
+    it('User successfully register', (done) => {
+        chai.request(app).post('/sign-up')
+            .send({
+                'username': 'test',
+                'password': 'testtest',
+                'password_repeat': 'testtest'
+            })
+            .end((err, res) => {
+                expect(res).to.have.be.status(201)
+                done();
+            })
+    })
+
+    it('Delete user by username', (done) => {
+        let username = "test";
+        chai.request(app).delete(`/users/delete/${username}`).end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+})
+
+describe('Test Login User', () => { 
+
+    it('User should be in database', (done) => {
+        chai.request(app).post('/login')
+            .send({
+                'username': 'permadi',
+                'password': 'permadi'
+            })
+            .end((err, res) => {
                 // console.log(res.body);
-                expect(res).to.have.be.status(401)
-                done();
-            })
-        })
-    
-        it('GET All Data Agama', (done) => {           
-            chai.request(app).get('/agama/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
-                // console.log(res.body);
+                // console.log(res.body.token);
+                expect(res.body).to.have.property('token');
+                token = res.body.token;
                 expect(res).to.have.be.status(200)
                 done();
             })
-        })
-    
-        it('GET Data Agama by ID but User Not Login', (done) => {
-            let id_agama = 1;
-            chai.request(app).get(`/agama/view/${id_agama}`).end((err, res) => { 
-                // console.log(res.body); 
-                expect(res).to.have.be.status(401)
-                done();
-            })
-        })
-    
-        it('GET Data Agama by ID', (done) => {
-            let id_agama = 1;
-            chai.request(app).get(`/agama/view/${id_agama}`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
-                // console.log(res.body); 
-                expect(res).to.have.be.status(200)
-                done();
-            })
-        })
-    
-        it('POST Data Agama but User Not Login', (done) => {
-            chai.request(app).post(`/agama/add`)
-                .send({
-                    'agama': 'test'
-                })
-                .end((err, res) => { 
-                // console.log(res.body); 
-                expect(res).to.have.be.status(401)
-                done();
-            })
-        })
-    
-        it('POST Data Agama', (done) => {
-            chai.request(app).post(`/agama/add`).set('Authorization', `Bearer ${token}`)
-                .send({
-                    'agama': 'test'
-                })
-                .end((err, res) => { 
-                // console.log(res.body); 
-                expect(res).to.have.be.status(200)
-                done();
-            })
-        })
-    
-        it('PUT Data Agama but User Not Login', (done) => {
-            chai.request(app).put(`/agama/update`)
-                .send({
-                    'id_agama': 1,
-                    'agama': 'Islam 2'
-                })
-                .end((err, res) => { 
-                // console.log(res.body);
-                expect(res).to.have.be.status(401)
-                done();
-            })
-        })
-    
-        it('PUT Data Agama', (done) => {
-            chai.request(app).put(`/agama/update`).set('Authorization', `Bearer ${token}`)
-                .send({
-                    'id_agama': 1,
-                    'agama': 'Islam 2'
-                })
-                .end((err, res) => { 
-                // console.log(res.body);
-                expect(res).to.have.be.status(200)
-                done();
-            })
-        })
-    
-        it('DELETE Data Agama but User Not Login', (done) => {
-            let id_agama = 1;
-            chai.request(app).delete(`/agama/delete/${id_agama}`)
-                .end((err, res) => { 
-                // console.log(res.body); 
-                expect(res).to.have.be.status(401)
-                done();
-            })
-        })
-    
-        it('DELETE Data Agama', (done) => {
-            let id_agama = 1;
-            chai.request(app).delete(`/agama/delete/${id_agama}`).set('Authorization', `Bearer ${token}`)
-                .end((err, res) => { 
-                // console.log(res.body); 
-                expect(res).to.have.be.status(200)
-                done();
-            })
-        })
-    
-    });
+    })
 
-    describe('Test API Data Ayah', () => {
+    it('User not in database', (done) => {
+        chai.request(app).post('/login')
+            .send({
+                'username': '.',
+                'password': '.'
+            })
+            .end((err, res) => {
+                expect(res).to.have.be.status(401)
+                done();
+            })
+    })
 
-        it('GET All Data Ayah but User Not Login', (done) => {           
-            chai.request(app).get('/ayah/view').end((err, res) => {  
-                // console.log(res.body);
+    it('User in database but wrong password', (done) => {
+        chai.request(app).post('/login')
+            .send({
+                'username': 'permadi',
+                'password': 'permadi2'
+            })
+            .end((err, res) => {
                 expect(res).to.have.be.status(401)
                 done();
             })
-        })
-    
-        it('GET All Data Ayah', (done) => {           
-            chai.request(app).get('/ayah/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
-                // console.log(res.body);
-                expect(res).to.have.be.status(200)
-                done();
-            })
-        })
-    
-        it('GET Data Ayah by ID but User Not Login', (done) => {
-            let id_ayah = "PRM030221001";
-            chai.request(app).get(`/ayah/view/${id_ayah}`).end((err, res) => { 
-                // console.log(res.body); 
-                expect(res).to.have.be.status(401)
-                done();
-            })
-        })
-    
-        it('GET Data Ayah by ID', (done) => {
-            let id_ayah = "PRM030221001";
-            chai.request(app).get(`/ayah/view/${id_ayah}`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
-                // console.log(res.body); 
-                expect(res).to.have.be.status(200)
-                done();
-            })
-        })
-    
-        it('POST Data Ayah', (done) => {
-            chai.request(app).post(`/ayah/add`).set('Authorization', `Bearer ${token}`)
-                .send({
-                    'id_ayah': "PRM030221006",
-                    'nama_ayah': 'Fadly',
-                    'nik': '1234567891',
-                    'tgl_lahir': '1980-09-01',
-                    'id_pendidikan': 2,
-                    'id_pekerjaan': 2,
-                    'id_penghasilan': 1,
-                    'id_disabilitas': 1
-                })
-                .end((err, res) => { 
-                // console.log(res.body); 
-                expect(res).to.have.be.status(200)
-                done();
-            })
-        })
-    
-        it('PUT Data Ayah but User Not Login', (done) => {
-            chai.request(app).put(`/ayah/update`)
-                .send({
-                    'id_ayah': "PRM030221004",
-                    'nama_ayah': 'Piyu',
-                    'nik': '1234567891',
-                    'tgl_lahir': '1980-09-01',
-                    'id_pendidikan': 2,
-                    'id_pekerjaan': 2,
-                    'id_penghasilan': 1,
-                    'id_disabilitas': 1
-                })
-                .end((err, res) => { 
-                // console.log(res.body); 
-                expect(res).to.have.be.status(401)
-                done();
-            })
-        })
-    
-        // it('PUT Data Ayah', (done) => {
-        //     chai.request(app).put(`/ayah/update`).set('Authorization', `Bearer ${token}`)
-        //         .send({
-        //             'id_ayah': "PRM030221004",
-        //             'nama_ayah': 'Piyu',
-        //             'nik': '1234567891',
-        //             'tgl_lahir': '1980-09-01',
-        //             'id_pendidikan': 2,
-        //             'id_pekerjaan': 2,
-        //             'id_penghasilan': 1,
-        //             'id_disabilitas': 1
-        //         })
-        //         .end((err, res) => { 
-        //         // console.log(res.body); 
-        //         expect(res).to.have.be.status(200)
-        //         done();
-        //     })
-        // })
+    })
 
-        it('DELETE Data Ayah but User Not Login', (done) => {
-            let id_ayah = "PRM030221001";
-            chai.request(app).delete(`/ayah/delete/${id_ayah}`)
-                .end((err, res) => { 
-                // console.log(res.body); 
-                expect(res).to.have.be.status(401)
-                done();
-            })
+})
+
+describe('Test API Data Agama', () => {
+
+    it('GET All Data Agama but User Not Login', (done) => {           
+        chai.request(app).get('/agama/view').end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
         })
-    
-        it('DELETE Data Ayah', (done) => {
-            let id_ayah = "PRM030221001";
-            chai.request(app).delete(`/ayah/delete/${id_ayah}`).set('Authorization', `Bearer ${token}`)
-                .end((err, res) => { 
-                // console.log(res.body); 
-                expect(res).to.have.be.status(200)
-                done();
-            })
+    })
+
+    it('GET All Data Agama', (done) => {           
+        chai.request(app).get('/agama/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
         })
-    
-    });
+    })
+
+    it('GET Data Agama by ID but User Not Login', (done) => {
+        let id_agama = 1;
+        chai.request(app).get(`/agama/view/${id_agama}`).end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('GET Data Agama by ID', (done) => {
+        let id_agama = 1;
+        chai.request(app).get(`/agama/view/${id_agama}`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('POST Data Agama but User Not Login', (done) => {
+        chai.request(app).post(`/agama/add`)
+            .send({
+                'agama': 'test'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('POST Data Agama', (done) => {
+        chai.request(app).post(`/agama/add`).set('Authorization', `Bearer ${token}`)
+            .send({
+                'agama': 'test'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('PUT Data Agama but User Not Login', (done) => {
+        chai.request(app).put(`/agama/update`)
+            .send({
+                'id_agama': 1,
+                'agama': 'Islam 2'
+            })
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('PUT Data Agama', (done) => {
+        chai.request(app).put(`/agama/update`).set('Authorization', `Bearer ${token}`)
+            .send({
+                'id_agama': 1,
+                'agama': 'Islam 2'
+            })
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('DELETE Data Agama but User Not Login', (done) => {
+        let id_agama = 1;
+        chai.request(app).delete(`/agama/delete/${id_agama}`)
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('DELETE Data Agama', (done) => {
+        let id_agama = 1;
+        chai.request(app).delete(`/agama/delete/${id_agama}`).set('Authorization', `Bearer ${token}`)
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+})
+
+describe('Test API Data Ayah', () => {
+
+    it('GET All Data Ayah but User Not Login', (done) => {           
+        chai.request(app).get('/ayah/view').end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('GET All Data Ayah', (done) => {           
+        chai.request(app).get('/ayah/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('GET Data Ayah by ID but User Not Login', (done) => {
+        let id_ayah = "PRM030221001";
+        chai.request(app).get(`/ayah/view/${id_ayah}`).end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('GET Data Ayah by ID', (done) => {
+        let id_ayah = "PRM030221001";
+        chai.request(app).get(`/ayah/view/${id_ayah}`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('POST Data Ayah', (done) => {
+        chai.request(app).post(`/ayah/add`).set('Authorization', `Bearer ${token}`)
+            .send({
+                'id_ayah': "PRM030221006",
+                'nama_ayah': 'Fadly',
+                'nik': '1234567891',
+                'tgl_lahir': '1980-09-01',
+                'id_pendidikan': 2,
+                'id_pekerjaan': 2,
+                'id_penghasilan': 1,
+                'id_disabilitas': 1
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('PUT Data Ayah but User Not Login', (done) => {
+        chai.request(app).put(`/ayah/update`)
+            .send({
+                'id_ayah': "PRM030221004",
+                'nama_ayah': 'Piyu',
+                'nik': '1234567891',
+                'tgl_lahir': '1980-09-01',
+                'id_pendidikan': 2,
+                'id_pekerjaan': 2,
+                'id_penghasilan': 1,
+                'id_disabilitas': 1
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    // it('PUT Data Ayah', (done) => {
+    //     chai.request(app).put(`/ayah/update`).set('Authorization', `Bearer ${token}`)
+    //         .send({
+    //             'id_ayah': "PRM030221004",
+    //             'nama_ayah': 'Piyu',
+    //             'nik': '1234567891',
+    //             'tgl_lahir': '1980-09-01',
+    //             'id_pendidikan': 2,
+    //             'id_pekerjaan': 2,
+    //             'id_penghasilan': 1,
+    //             'id_disabilitas': 1
+    //         })
+    //         .end((err, res) => { 
+    //         // console.log(res.body); 
+    //         expect(res).to.have.be.status(200)
+    //         done();
+    //     })
+    // })
+
+    it('DELETE Data Ayah but User Not Login', (done) => {
+        let id_ayah = "PRM030221001";
+        chai.request(app).delete(`/ayah/delete/${id_ayah}`)
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('DELETE Data Ayah', (done) => {
+        let id_ayah = "PRM030221001";
+        chai.request(app).delete(`/ayah/delete/${id_ayah}`).set('Authorization', `Bearer ${token}`)
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
 
 })
 
