@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 24, 2021 at 11:16 AM
+-- Generation Time: Mar 04, 2021 at 03:17 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.1.33
 
@@ -67,11 +67,11 @@ CREATE TABLE `ayah` (
 --
 
 INSERT INTO `ayah` (`id_ayah`, `nama_ayah`, `nik`, `tgl_lahir`, `id_pendidikan`, `id_pekerjaan`, `id_penghasilan`, `id_disabilitas`) VALUES
-('PRM030221001', 'Suprani', '1234567891', '1980-09-01', 3, 2, 1, 1),
+('PRM030221001', 'Suprani', '1234567891', '1980-09-01', 2, 2, 1, 1),
 ('PRM030221002', 'prayitno', '1234567891', '1980-09-01', 3, 2, 1, 1),
 ('PRM030221003', 'Andrew', '1234567891', '1980-09-01', 3, 2, 1, 1),
-('PRM030221004', 'Johnson', '1234567891', '1980-09-01', 3, 2, 1, 1),
-('PRM030221005', 'Ilham', '1234567891', '1980-09-01', 3, 2, 1, 1);
+('PRM030221004', 'Johnson', '1234567891', '1980-09-01', 3, 13, 1, 1),
+('PRM030221005', 'Ilham', '1234567891', '1980-09-01', 2, 2, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -418,7 +418,9 @@ INSERT INTO `priodik_siswa` (`id_priodik_siswa`, `id_siswa`, `tinggi_badan`, `be
 ('PSW050221005', 'SSW050221001', '165', '72', '2', '100', '1'),
 ('PSW050221006', 'SSW050221002', '156', '71', '2', '100', '2'),
 ('PSW050221007', 'SSW050221013', '12', '12', '1', '12', '12'),
-('PSW050221008', 'SSW050221014', '165', '65', '1', '2', '2');
+('PSW050221008', 'SSW050221014', '', '', '', '', ''),
+('PSW050221009', 'SSW050221015', '165', '70', '1', '1', '1'),
+('PSW050221010', 'SSW050221016', '1', '1', '1', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -475,7 +477,9 @@ INSERT INTO `siswa` (`id_siswa`, `nama_lengkap`, `jenis_kelamin`, `nisn`, `nik`,
 ('SSW050221011', 'Assipa Rohmawati', 'P', '1234567891', '1234567891', 'Serang', '2015-02-05', 1, 'WNI', 1, 'Kp. Kadomas', 1, 'Kadomas', '001', '001', 2, 1, NULL, NULL, NULL, '1234567891', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 ('SSW050221012', 'Machfudz Achyar Benzema', 'L', '1234567891', '1234567891', 'Serang', '2015-02-05', 2, 'WNI', 1, 'Kp. Kopi Bera', 1, 'Kopi Bera', '002', '002', 2, 1, NULL, NULL, NULL, '1234567891', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 ('SSW050221013', 'Nabilah Ratna Ayu', 'L', '123', '123', 'Cirebon', '2021-02-22', 1, 'WNI', 18, '123', 1, '123', '123', '123', 1, 1, '123', 1, '123', '123', 1, 'PRM030221001', 'PRF030221001', 'PRW030221001', '123', '123', '123'),
-('SSW050221014', 'Abdul Fatah', 'L', '123', '123', 'Cirebon', '2021-02-22', 1, 'WNI', 18, 'Arjawinangun', 1, 'p', '001', '002', 2, 1, '123', 1, '123', '123', 1, 'PRM030221001', 'PRF030221001', 'PRW030221001', '12345678910', '12345678910', 'permadiekapermana@gmail.com');
+('SSW050221014', 'Muhammad Abdul Fatah', 'L', '123', '1234567891', 'Cirebon', '2021-02-22', 1, 'WNI', 1, 'Arjawinangun', 1, 'Abdul Fatah', '001', '002', 2, 1, '123', 1, '123', '123', 1, 'PRM030221001', 'PRF030221001', 'PRW030221001', '12345678910', '12345678910', 'permadiekapermana@gmail.com'),
+('SSW050221015', 'Permadi Eka Permana', 'L', '123', '123', '123', '2006-05-23', 1, 'WNI', 1, 'cirebon', 1, 'Karangasem', '004', '001', 2, 1, '123', 1, '123', '123', 1, '', '', 'PRW030221001', '123', '123', 'p@gmail.com'),
+('SSW050221016', '1', 'L', '1', '1234567891', '1', '2021-03-01', 1, 'WNI', 1, '1', 1, '1', '1', '1', 1, 1, '1', 1, '1', '1', 1, 'PRM030221001', 'PRF030221001', NULL, '1', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -529,7 +533,9 @@ INSERT INTO `siswa_masuk` (`id_siswamasuk`, `id_siswa`, `jenis_daftar`, `tgl_mas
 ('SWM050221004', 'SSW050221004', '1', '2021-02-11', '122', '123', '123', '123'),
 ('SWM050221005', 'SSW050221005', '1', '2021-02-11', '123', '123', '123', '123'),
 ('SWM050221006', 'SSW050221013', '1', '2021-02-22', '12', '12123', '123', '123'),
-('SWM050221007', 'SSW050221014', '1', '2021-02-22', '123', '123', '123', '123');
+('SWM050221007', 'SSW050221014', '1', '2021-02-22', '123', '123', '123', '123'),
+('SWM050221008', 'SSW050221015', '1', '2021-03-01', '1', '1', '1', '1'),
+('SWM050221009', 'SSW050221016', '1', '2021-03-01', '1', '1', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -598,7 +604,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `registered`, `last_login`) VALUES
-('cfe70b7a-b087-48ff-839c-90ad462259c2', 'permadi', '$2a$10$jDl2f7RBaoaum1PGhLhXruSJe4Try5OLrV3K3/DfO42nArvrBbpny', '2021-02-24 13:50:06', '2021-02-24 15:45:49');
+('33763608-be84-49eb-bed5-da516b80eb05', 'susianti', '$2a$10$GCZzX3UWXOMFWMwZDUD2J.K/Q.FGx35tOuK6p6EXkgHk9FNXYm59W', '2021-03-02 12:10:53', NULL),
+('8615076c-9037-4c48-88e8-810e2d329374', 'admin', '$2a$10$u2W/DVOS./WGAYdYURinFuPxyobkehLFNJSOyHgNDdg0EaTJBLAwe', '2021-03-01 10:40:41', '2021-03-01 12:19:51'),
+('cfe70b7a-b087-48ff-839c-90ad462259c2', 'permadi', '$2a$10$jDl2f7RBaoaum1PGhLhXruSJe4Try5OLrV3K3/DfO42nArvrBbpny', '2021-02-24 13:50:06', '2021-03-04 09:11:46');
 
 -- --------------------------------------------------------
 
@@ -801,7 +809,7 @@ ALTER TABLE `wali`
 -- AUTO_INCREMENT for table `agama`
 --
 ALTER TABLE `agama`
-  MODIFY `id_agama` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id_agama` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `bank`

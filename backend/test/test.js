@@ -178,6 +178,71 @@ describe('Test API Data Agama', () => {
         })
     })
 
+    it('POST Data Agama but User Not Login', (done) => {
+        chai.request(app).post(`/agama/add`)
+            .send({
+                'agama': 'test'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(err).to.be.null,
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('POST Data Agama', (done) => {
+        chai.request(app).post(`/agama/add`).set('Authorization', `Bearer ${token}`)
+            .send({
+                'agama': 'test'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(err).to.be.null,
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('PUT Data Agama but User Not Login', (done) => {
+        chai.request(app).put(`/agama/update`)
+            .send({
+                'id_agama': 1,
+                'agama': 'Islam 2'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(err).to.be.null,
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('PUT Data Agama', (done) => {
+        chai.request(app).put(`/agama/update`).set('Authorization', `Bearer ${token}`)
+            .send({
+                'id_agama': 1,
+                'agama': 'Islam 2'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(err).to.be.null,
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('DELETE Data Agama', (done) => {
+        let id_agama = 1;
+        chai.request(app).delete(`/agama/delete/${id_agama}`).set('Authorization', `Bearer ${token}`)
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(err).to.be.null,
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
 });
 
 describe('Test API Data Ayah', () => {
