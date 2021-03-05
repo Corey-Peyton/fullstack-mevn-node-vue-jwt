@@ -271,7 +271,7 @@ describe('Test API Data Ayah', () => {
         chai.request(app).get(`/ayah/view/${id_ayah}`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
             // console.log(res.body); 
             expect(res).to.have.be.status(200)
-            expect(res.body.values).to.deep.include({'id_agama': 1, 'agama': 'Islam'})
+            expect(res.body.values).to.deep.include({'id_ayah': 'PRM030221001', 'nama_ayah': 'Suprani', 'nik': '1234567891', 'tgl_lahir': '1980-09-01', 'id_pendidikan': 2, 'id_pekerjaan': 2, 'id_penghasilan': 1, 'id_disabilitas': 1})
             done();
         })
     })
