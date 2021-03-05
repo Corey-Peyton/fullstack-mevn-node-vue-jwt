@@ -1265,6 +1265,25 @@ describe('Test API GET Data Penghasilan', () => {
         })
     })
 
+    it('GET Data Penghasilan by ID but User Not Login', (done) => {   
+        let id_penghasilan = 1;        
+        chai.request(app).get(`/penghasilan/view/${id_penghasilan}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('GET Data Penghasilan by ID', (done) => {   
+        let id_penghasilan = 1;        
+        chai.request(app).get(`/penghasilan/view/${id_penghasilan}`).set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            expect(res.body.values).to.deep.include({'id_penghasilan': 1, 'penghasilan': 'Kurang dari Rp. 500.000'})
+            done();
+        })
+    })
+
 })
 
 describe('Test API GET Data PIP', () => {
