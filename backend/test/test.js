@@ -1226,6 +1226,25 @@ describe('Test API GET Data Pendidikan', () => {
         })
     })
 
+    it('GET Data Pendidikan by ID but User Not Login', (done) => {   
+        let id_pendidikan = 1;        
+        chai.request(app).get(`/pendidikan/view/${id_pendidikan}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('GET Data Pendidikan by ID', (done) => {   
+        let id_pendidikan = 1;        
+        chai.request(app).get(`/pendidikan/view/${id_pendidikan}`).set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            expect(res.body.values).to.deep.include({'id_pendidikan': 1, 'pendidikan': 'Tidak/Belum Sekolah'})
+            done();
+        })
+    })
+
 })
 
 describe('Test API GET Data Penghasilan', () => {
