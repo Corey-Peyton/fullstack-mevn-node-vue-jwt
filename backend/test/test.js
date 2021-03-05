@@ -1441,4 +1441,23 @@ describe('Test API GET Data Transportasi', () => {
         })
     })
 
+    it('GET Data Transportasi by ID but User Not Login', (done) => {   
+        let id_transportasi = 1;        
+        chai.request(app).get(`/transportasi/view/${id_transportasi}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('GET Data Transportasi by ID', (done) => {   
+        let id_transportasi = 1;        
+        chai.request(app).get(`/transportasi/view/${id_transportasi}`).set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            expect(res.body.values).to.deep.include({'id_transportasi': 1, 'status_transportasi': 'Jalan Kaki'})
+            done();
+        })
+    })
+
 })
