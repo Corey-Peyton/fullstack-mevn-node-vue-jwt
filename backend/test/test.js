@@ -1109,6 +1109,25 @@ describe('Test API GET Data Jenis Alasan', () => {
         })
     })
 
+    it('GET Data Jenis Alasan by ID but User Not Login', (done) => {   
+        let id_jenisalasan = 1;        
+        chai.request(app).get(`/jenisalasan/view/${id_jenisalasan}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('GET Data Jenis Alasan by ID', (done) => {   
+        let id_jenisalasan = 1;        
+        chai.request(app).get(`/jenisalasan/view/${id_jenisalasan}`).set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            expect(res.body.values).to.deep.include({'id_jenisalasan': 1, 'alasan': 'Lulus'})
+            done();
+        })
+    })
+
 })
 
 describe('Test API GET Data Kelurahan', () => {
