@@ -1402,6 +1402,25 @@ describe('Test API GET Data Status Tinggal', () => {
         })
     })
 
+    it('GET Data Status Tinggal by ID but User Not Login', (done) => {   
+        let id_statustinggal = 'PSW050221001';        
+        chai.request(app).get(`/statustinggal/view/${id_statustinggal}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('GET Data Status Tinggal by ID', (done) => {   
+        let id_statustinggal = 1;        
+        chai.request(app).get(`/statustinggal/view/${id_statustinggal}`).set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            expect(res.body.values).to.deep.include({'id_statustinggal': 1, 'status_tinggal': 'Lainnya'})
+            done();
+        })
+    })
+
 })
 
 describe('Test API GET Data Transportasi', () => {
