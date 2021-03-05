@@ -1304,6 +1304,25 @@ describe('Test API GET Data PIP', () => {
         })
     })
 
+    it('GET Data PIP by ID but User Not Login', (done) => {   
+        let id_pip = 1;        
+        chai.request(app).get(`/pip/view/${id_pip}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('GET Data PIP by ID', (done) => {   
+        let id_pip = 1;        
+        chai.request(app).get(`/pip/view/${id_pip}`).set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            expect(res.body.values).to.deep.include({'id_pip': 1, 'id_siswa': 'SSW050221001', 'alasan_layakpip': 'Keluarga Kurang Mampu', 'no_kip': '123456', 'nama_kip': 'Udin'})
+            done();
+        })
+    })
+
 })
 
 describe('Test API GET Data Priodik Siswa', () => {
