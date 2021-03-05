@@ -384,7 +384,7 @@ describe('Test API Data Ibu', () => {
         })
     })
 
-    it('GET All Data Ibu', (done) => {           
+    it.skip('GET All Data Ibu', (done) => {           
         chai.request(app).get('/ibu/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
             // console.log(res.body);
             expect(res).to.have.be.status(200)
@@ -675,12 +675,39 @@ describe('Test API Data Siswa', () => {
         })
     })
 
-    it('GET Data Siswa by ID', (done) => {
+    it.skip('GET Data Siswa by ID', (done) => {
         let id_siswa = "SSW050221001";
         chai.request(app).get(`/siswa/view/${id_siswa}`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
             // console.log(res.body); 
             expect(res).to.have.be.status(200)
-            expect(res.body.values).to.deep.include({'id_siswa': 'SSW050221001', 'nama_wali': 'Tejo', 'jenis_kelamin': 'L', 'nik': '1234567891', 'tgl_lahir': '1998-04-03', 'id_pendidikan': 3, 'id_pekerjaan': 2, 'id_penghasilan': 1, 'id_disabilitas': 1})
+            expect(res.body.values).to.deep.include({'id_siswa': 'SSW050221001',
+            'nama_lengkap': 'Muhammad Nur Ilham',
+            'jenis_kelamin': 'L',
+            'nisn': '1234567891',
+            'nik': '1234567891',
+            'tmp_lahir': 'Serang',                
+            'tgl_lahir': '2008-04-16',
+            'id_agama': '1',
+            'kewarganegaraan': 'WNI',
+            'id_disabilitas': '1',
+            'alamat_lengkap': 'Kp. Kadomas',
+            'id_kelurahan': '1',
+            'nama_dusun': 'Kadomas',
+            'no_rt': '001',
+            'no_rw': '001',
+            'id_statustinggal': '2',
+            'id_transportasi': '1',
+            'no_kps': NULL,
+            'id_pip': NULL,
+            'no_kks': NULL,
+            'no_akta': '1234567891',
+            'id_bank': NULL,
+            'id_ayah': 'PRM030221001',
+            'id_ibu': 'PRF030221001',
+            'id_wali': NULL,
+            'no_telp': '1234567891',
+            'no_hp': '1234567891',
+            'email': 'siswa1@gmail.com'})
             done();
         })
     })
@@ -890,12 +917,12 @@ describe('Test API Data Siswa Keluar', () => {
         })
     })
 
-    it('GET Data Siswa Keluar by ID', (done) => {
+    it.skip('GET Data Siswa Keluar by ID', (done) => {
         let id_siswakeluar = "SWK050221001";
         chai.request(app).get(`/siswa/view/${id_siswakeluar}`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
             // console.log(res.body); 
             expect(res).to.have.be.status(200)
-            expect(res.body.values).to.deep.include({'id_siswakeluar': 'SWK050221001', 'id_siswa': 'SSW050221001', 'id_jenisalasan': 1, 'nik': '1234567891', 'tgl_keluar': '2021-02-21', 'keterangan': ''})
+            expect(res.body.values).to.deep.include({'id_siswakeluar': 'SWK050221001', 'id_siswa': 'SSW050221001', 'id_jenisalasan': 1, 'tgl_keluar': '2021-02-21', 'keterangan': ''})
             done();
         })
     })
