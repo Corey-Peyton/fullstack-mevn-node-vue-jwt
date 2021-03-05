@@ -1148,6 +1148,25 @@ describe('Test API GET Data Kelurahan', () => {
         })
     })
 
+    it('GET Data Kelurahan by ID but User Not Login', (done) => {   
+        let id_kelurahan = 1;        
+        chai.request(app).get(`/kelurahan/view/${id_kelurahan}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it.skip('GET Data Kelurahan by ID', (done) => {   
+        let id_kelurahan = 1;        
+        chai.request(app).get(`/kelurahan/view/${id_kelurahan}`).set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            expect(res.body.values).to.deep.include({'id_kelurahan': 1, 'id_kecamatan': 1, 'kelurahan': 'Antapani Kidul', 'kode_pos': '39152'})
+            done();
+        })
+    })
+
 })
 
 describe('Test API GET Data Pekerjaan', () => {
