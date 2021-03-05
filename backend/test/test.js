@@ -1343,6 +1343,25 @@ describe('Test API GET Data Priodik Siswa', () => {
         })
     })
 
+    it('GET Data Priodik Siswa by ID but User Not Login', (done) => {   
+        let id_priodik_siswa = 'PSW050221001';        
+        chai.request(app).get(`/priodiksiswa/view/${id_priodik_siswa}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it.skip('GET Data Priodik Siswa by ID', (done) => {   
+        let id_priodik_siswa = 'PSW050221001';        
+        chai.request(app).get(`/priodiksiswa/view/${id_priodik_siswa}`).set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            expect(res.body.values).to.deep.include({'id_priodik_siswa': 'PSW050221001', 'id_siswa': 'SSW050221001', 'tinggi_badan': '165', 'berat_badan': '72', 'jarak_kesekolah': '2', 'detail_jarak': '100', 'jml_saudarakandung': '1'})
+            done();
+        })
+    })
+
 })
 
 describe('Test API GET Data Siswa Masuk', () => {
