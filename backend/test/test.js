@@ -158,11 +158,11 @@ describe('Test API Data Agama', () => {
     })
 
     it('GET Data Agama by ID', (done) => {
-        let id_agama = 1;
+        let id_agama = 3;
         chai.request(app).get(`/agama/view/${id_agama}`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
             // console.log(res.body.values); 
             expect(res).to.have.be.status(200)
-            expect(res.body.values).to.deep.include({'id_agama': 1, 'agama': 'Islam'})
+            expect(res.body.values).to.deep.include({'id_agama': 3, 'agama': 'Katholik'})
             done();
         })
     })
@@ -1027,6 +1027,25 @@ describe('Test API GET Data Bank', () => {
         chai.request(app).get('/bank/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
             // console.log(res.body);
             expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('GET Data Bank by ID but User Not Login', (done) => {   
+        let id_bank = 1;        
+        chai.request(app).get(`/bank/view/${id_bank}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('GET Data Bank by ID', (done) => {   
+        let id_bank = 1;        
+        chai.request(app).get(`/bank/view/${id_bank}`).set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            expect(res.body.values).to.deep.include({'id_bank': 1, 'nama_bank': 'BCA', 'norek': '123456789', 'atas_nama': 'Maria Ismi'})
             done();
         })
     })
