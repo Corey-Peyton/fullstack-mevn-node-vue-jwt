@@ -680,6 +680,7 @@ describe('Test API Data Siswa', () => {
         chai.request(app).get(`/siswa/view/${id_siswa}`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
             // console.log(res.body); 
             expect(res).to.have.be.status(200)
+            expect(res.body.values).to.deep.include({'id_siswa': 'SSW050221001', 'nama_wali': 'Tejo', 'jenis_kelamin': 'L', 'nik': '1234567891', 'tgl_lahir': '1998-04-03', 'id_pendidikan': 3, 'id_pekerjaan': 2, 'id_penghasilan': 1, 'id_disabilitas': 1})
             done();
         })
     })
@@ -894,6 +895,7 @@ describe('Test API Data Siswa Keluar', () => {
         chai.request(app).get(`/siswa/view/${id_siswakeluar}`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
             // console.log(res.body); 
             expect(res).to.have.be.status(200)
+            expect(res.body.values).to.deep.include({'id_siswakeluar': 'SWK050221001', 'id_siswa': 'SSW050221001', 'id_jenisalasan': 1, 'nik': '1234567891', 'tgl_keluar': '2021-02-21', 'keterangan': ''})
             done();
         })
     })
