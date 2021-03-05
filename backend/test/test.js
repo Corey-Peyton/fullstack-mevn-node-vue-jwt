@@ -541,7 +541,7 @@ describe('Test API Data Wali', () => {
         chai.request(app).get(`/wali/view/${id_wali}`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
             // console.log(res.body); 
             expect(res).to.have.be.status(200)
-            expect(res.body.values).to.deep.include({'id_wali': 'PRW030221001', 'nama_wali': 'Surti', 'nik': '1234567891', 'tgl_lahir': '1998-04-03', 'id_pendidikan': 3, 'id_pekerjaan': 2, 'id_penghasilan': 1, 'id_disabilitas': 1})
+            expect(res.body.values).to.deep.include({'id_wali': 'PRW030221001', 'nama_wali': 'Tejo', 'jenis_kelamin': 'L', 'nik': '1234567891', 'tgl_lahir': '1998-04-03', 'id_pendidikan': 3, 'id_pekerjaan': 2, 'id_penghasilan': 1, 'id_disabilitas': 1})
             done();
         })
     })
