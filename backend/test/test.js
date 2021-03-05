@@ -1187,6 +1187,25 @@ describe('Test API GET Data Pekerjaan', () => {
         })
     })
 
+    it('GET Data Pekerjaan by ID but User Not Login', (done) => {   
+        let id_pekerjaan = 1;        
+        chai.request(app).get(`/pekerjaan/view/${id_pekerjaan}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('GET Data Pekerjaan by ID', (done) => {   
+        let id_pekerjaan = 1;        
+        chai.request(app).get(`/pekerjaan/view/${id_pekerjaan}`).set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            expect(res.body.values).to.deep.include({'id_pekerjaan': 1, 'pekerjaan': 'Belum / Tidak Bekerja'})
+            done();
+        })
+    })
+
 })
 
 describe('Test API GET Data Pendidikan', () => {
