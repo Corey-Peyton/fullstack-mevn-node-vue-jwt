@@ -1,5 +1,6 @@
 let chai = require('chai');
 let chaiHttp = require('chai-http');
+const { response } = require('express');
 let expect = chai.expect;
 let app = require('./../index');
 
@@ -159,8 +160,9 @@ describe('Test API Data Agama', () => {
     it('GET Data Agama by ID', (done) => {
         let id_agama = 1;
         chai.request(app).get(`/agama/view/${id_agama}`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
-            // console.log(res.body); 
+            // console.log(res.body.values); 
             expect(res).to.have.be.status(200)
+            expect(res.body.values).to.deep.include({'id_agama': 1, 'agama': 'Islam'})
             done();
         })
     })
@@ -219,7 +221,7 @@ describe('Test API Data Agama', () => {
         let id_agama = 1;
         chai.request(app).delete(`/agama/delete/${id_agama}`)
             .end((err, res) => { 
-            // console.log(res.body); 
+            // console.log(res.body);
             expect(res).to.have.be.status(401)
             done();
         })
@@ -269,6 +271,7 @@ describe('Test API Data Ayah', () => {
         chai.request(app).get(`/ayah/view/${id_ayah}`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
             // console.log(res.body); 
             expect(res).to.have.be.status(200)
+            expect(res.body.values).to.deep.include({'id_agama': 1, 'agama': 'Islam'})
             done();
         })
     })
