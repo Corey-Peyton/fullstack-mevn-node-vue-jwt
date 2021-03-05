@@ -1070,6 +1070,25 @@ describe('Test API GET Data Disabilitas', () => {
         })
     })
 
+    it('GET Data Disabilitas by ID but User Not Login', (done) => {   
+        let id_disabilitas = 1;        
+        chai.request(app).get(`/disabilitas/view/${id_disabilitas}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('GET Data Disabilitas by ID', (done) => {   
+        let id_disabilitas = 1;        
+        chai.request(app).get(`/disabilitas/view/${id_disabilitas}`).set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            expect(res.body.values).to.deep.include({'id_disabilitas': 1, 'status_disabilitas': 'Tidak'})
+            done();
+        })
+    })
+
 })
 
 describe('Test API GET Data Jenis Alasan', () => {
