@@ -1460,4 +1460,74 @@ describe('Test API GET Data Transportasi', () => {
         })
     })
 
+    it('POST Data Transportasi but User Not Login', (done) => {
+        chai.request(app).post(`/transportasi/add`)
+            .send({
+                'status_transportasi': 'test'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('POST Data Transportasi', (done) => {
+        chai.request(app).post(`/transportasi/add`).set('Authorization', `Bearer ${token}`)
+            .send({
+                'status_transportasi': 'test'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('PUT Data Transportasi but User Not Login', (done) => {
+        chai.request(app).put(`/transportasi/update`)
+            .send({
+                'id_transportasi': 1,
+                'status_transportasi': 'Test 2'
+            })
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('PUT Data Transportasi', (done) => {
+        chai.request(app).put(`/transportasi/update`).set('Authorization', `Bearer ${token}`)
+            .send({
+                'id_transportasi': 1,
+                'status_transportasi': 'Test 2'
+            })
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('DELETE Data Transportasi but User Not Login', (done) => {
+        let id_transportasi = 1;
+        chai.request(app).delete(`/transpid_transportasi/delete/${id_transportasi}`)
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(404)
+            done();
+        })
+    })
+
+    it('DELETE Data Transportasi', (done) => {
+        let id_transportasi = 1;
+        chai.request(app).delete(`/transportasi/delete/${id_transportasi}`).set('Authorization', `Bearer ${token}`)
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
 })
