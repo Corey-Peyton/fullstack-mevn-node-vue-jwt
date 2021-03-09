@@ -14,12 +14,12 @@ connection.query(
     `SELECT * FROM users WHERE username = ${connection.escape(req.body.username)};`,
     (err, result) => {
     // user does not exists
-    if (err) {
-        throw err;
-        return res.status(400).send({
-        msg: err
-        });
-    }
+    // if (err) {
+    //     throw err;
+    //     return res.status(400).send({
+    //     msg: err
+    //     });
+    // }
 
     if (!result.length) {
         return res.status(401).send({
@@ -33,12 +33,12 @@ connection.query(
         result[0]['password'],
         (bErr, bResult) => {
         // wrong password
-        if (bErr) {
-            throw bErr;
-            return res.status(401).send({
-            msg: 'Username or password is incorrect!'
-            });
-        }
+        // if (bErr) {
+        //     throw bErr;
+        //     return res.status(401).send({
+        //     msg: 'Username or password is incorrect!'
+        //     });
+        // }
 
         if (bResult) {
             // header, payload, signature

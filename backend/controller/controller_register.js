@@ -32,12 +32,12 @@ connection.query(
                 req.body.username
             )}, ${connection.escape(hash)}, now())`,
             (err, result) => {
-                if (err) {
-                throw err;
-                return res.status(400).send({
-                    msg: err
-                });
-                }
+                // if (err) {
+                // throw err;
+                // return res.status(400).send({
+                //     msg: err
+                // });
+                // }
                 return res.status(201).send({
                 msg: 'Registered!'
                 });

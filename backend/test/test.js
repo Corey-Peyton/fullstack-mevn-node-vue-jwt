@@ -259,7 +259,7 @@ describe('Test API Data Ayah', () => {
 
     it('GET Data Ayah by ID but User Not Login', (done) => {
         let id_ayah = "PRM030221001";
-        chai.request(app).get(`/ayah/view/${id_ayah}`).end((err, res) => { 
+        chai.request(app).get(`/ayah/view/${id_ayah}`).end((err, res) => {
             // console.log(res.body); 
             expect(res).to.have.be.status(401)
             done();
@@ -384,7 +384,7 @@ describe('Test API Data Ibu', () => {
         })
     })
 
-    it.skip('GET All Data Ibu', (done) => {           
+    it.skip('GET All Data Ibu', (done) => {
         chai.request(app).get('/ibu/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
             // console.log(res.body);
             expect(res).to.have.be.status(200)
