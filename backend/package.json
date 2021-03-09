@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --exit",
+    "test-cover": "nyc report --reporter=lcov",
+    "sonar": "node sonar-project.js",
     "serve": "node index.js"
   },
   "keywords": [],
@@ -22,6 +24,8 @@
   "devDependencies": {
     "chai": "^4.3.0",
     "chai-http": "^4.3.0",
-    "mocha": "^8.3.0"
+    "mocha": "^8.3.0",
+    "nyc": "^15.1.0",
+    "sonarqube-scanner": "^2.8.0"
   }
 }
