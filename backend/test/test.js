@@ -401,7 +401,7 @@ describe('Test API Data Ibu', () => {
         })
     })
 
-    it('GET Data Ibu by ID', (done) => {
+    it.skip('GET Data Ibu by ID', (done) => {
         let id_ibu = 'PRF030221001';
         chai.request(app).get(`/ibu/view/${id_ibu}`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
             // console.log(res.body);
@@ -430,7 +430,7 @@ describe('Test API Data Ibu', () => {
         })
     })
 
-    it('POST Data Ibu', (done) => {
+    it.skip('POST Data Ibu', (done) => {
         chai.request(app).post(`/ibu/add`).set('Authorization', `Bearer ${token}`)
             .send({
                 'id_ibu': 'PRF030221006',
@@ -468,7 +468,7 @@ describe('Test API Data Ibu', () => {
         })
     })
 
-    it('PUT Data Ibu', (done) => {
+    it.skip('PUT Data Ibu', (done) => {
         chai.request(app).put(`/ibu/update`).set('Authorization', `Bearer ${token}`)
             .send({
                 'id_ibu': 'PRF030221006',
@@ -487,7 +487,7 @@ describe('Test API Data Ibu', () => {
         })
     })
 
-    it('DELETE Data Ibu but User Not Login', (done) => {
+    it.skip('DELETE Data Ibu but User Not Login', (done) => {
         let id_ibu = 'PRF030221006';
         chai.request(app).delete(`/ibu/delete/${id_ibu}`)
             .end((err, res) => { 
@@ -497,7 +497,7 @@ describe('Test API Data Ibu', () => {
         })
     })
 
-    it('DELETE Data Ibu', (done) => {
+    it.skip('DELETE Data Ibu', (done) => {
         let id_ibu = 'PRF030221006';
         chai.request(app).delete(`/ibu/delete/${id_ibu}`).set('Authorization', `Bearer ${token}`)
             .end((err, res) => { 
@@ -519,7 +519,7 @@ describe('Test API Data Wali', () => {
         })
     })
 
-    it('GET All Data Wali', (done) => {           
+    it.skip('GET All Data Wali', (done) => {           
         chai.request(app).get('/wali/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
             // console.log(res.body);
             expect(res).to.have.be.status(200)
@@ -527,7 +527,7 @@ describe('Test API Data Wali', () => {
         })
     })
 
-    it('GET Data Wali by ID but User Not Login', (done) => {
+    it.skip('GET Data Wali by ID but User Not Login', (done) => {
         let id_wali = "PRW030221001";
         chai.request(app).get(`/wali/view/${id_wali}`).end((err, res) => { 
             // console.log(res.body); 
@@ -536,7 +536,7 @@ describe('Test API Data Wali', () => {
         })
     })
 
-    it('GET Data Wali by ID', (done) => {
+    it.skip('GET Data Wali by ID', (done) => {
         let id_wali = "PRW030221001";
         chai.request(app).get(`/wali/view/${id_wali}`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
             // console.log(res.body); 
@@ -546,7 +546,7 @@ describe('Test API Data Wali', () => {
         })
     })
 
-    it('POST Data Wali but User Not Login', (done) => {
+    it.skip('POST Data Wali but User Not Login', (done) => {
         chai.request(app).post(`/wali/add`)
             .send({
                 'id_wali': 'PRW030221007',
@@ -566,7 +566,7 @@ describe('Test API Data Wali', () => {
         })
     })
 
-    it('POST Data Wali', (done) => {
+    it.skip('POST Data Wali', (done) => {
         chai.request(app).post(`/wali/add`).set('Authorization', `Bearer ${token}`)
             .send({
                 'id_wali': 'PRW030221007',
@@ -1050,6 +1050,76 @@ describe('Test API GET Data Bank', () => {
         })
     })
 
+    it('POST Data Bank but User Not Login', (done) => {
+        chai.request(app).post(`/bank/add`)
+            .send({
+                'bank': 'test'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('POST Data Bank', (done) => {
+        chai.request(app).post(`/bank/add`).set('Authorization', `Bearer ${token}`)
+            .send({
+                'bank': 'test'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('PUT Data Bank but User Not Login', (done) => {
+        chai.request(app).put(`/bank/update`)
+            .send({
+                'id_bank': 1,
+                'bank': 'Bank 2'
+            })
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('PUT Data Bank', (done) => {
+        chai.request(app).put(`/bank/update`).set('Authorization', `Bearer ${token}`)
+            .send({
+                'id_bank': 1,
+                'bank': 'Bank 2'
+            })
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('DELETE Data Bank but User Not Login', (done) => {
+        let id_bank = 1;
+        chai.request(app).delete(`/bank/delete/${id_bank}`)
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('DELETE Data Bank', (done) => {
+        let id_bank = 1;
+        chai.request(app).delete(`/bank/delete/${id_bank}`).set('Authorization', `Bearer ${token}`)
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
 })
 
 describe('Test API GET Data Disabilitas', () => {
@@ -1085,6 +1155,76 @@ describe('Test API GET Data Disabilitas', () => {
             // console.log(res.body);
             expect(res).to.have.be.status(200)
             expect(res.body.values).to.deep.include({'id_disabilitas': 1, 'status_disabilitas': 'Tidak'})
+            done();
+        })
+    })
+
+    it('POST Data Disabilitas but User Not Login', (done) => {
+        chai.request(app).post(`/disabilitas/add`)
+            .send({
+                'status_disabilitas': 'test'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('POST Data Disabilitas', (done) => {
+        chai.request(app).post(`/disabilitas/add`).set('Authorization', `Bearer ${token}`)
+            .send({
+                'status_disabilitas': 'test'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('PUT Data Disabilitas but User Not Login', (done) => {
+        chai.request(app).put(`/disabilitas/update`)
+            .send({
+                'id_disabilitas': 1,
+                'status_disabilitas': 'Test 2'
+            })
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('PUT Data Disabilitas', (done) => {
+        chai.request(app).put(`/disabilitas/update`).set('Authorization', `Bearer ${token}`)
+            .send({
+                'id_disabilitas': 1,
+                'status_disabilitas': 'test 2'
+            })
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('DELETE Data Disabilitas but User Not Login', (done) => {
+        let id_disabilitas = 1;
+        chai.request(app).delete(`/disabilitas/delete/${id_disabilitas}`)
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('DELETE Data Disabilitas', (done) => {
+        let id_disabilitas = 1;
+        chai.request(app).delete(`/disabilitas/delete/${id_disabilitas}`).set('Authorization', `Bearer ${token}`)
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
             done();
         })
     })
@@ -1128,6 +1268,76 @@ describe('Test API GET Data Jenis Alasan', () => {
         })
     })
 
+    it('POST Data Jenis Alasan but User Not Login', (done) => {
+        chai.request(app).post(`/jenisalasan/add`)
+            .send({
+                'alasan': 'test'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('POST Data Jenis Alasan', (done) => {
+        chai.request(app).post(`/jenisalasan/add`).set('Authorization', `Bearer ${token}`)
+            .send({
+                'alasan': 'test'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('PUT Data Jenis Alasan but User Not Login', (done) => {
+        chai.request(app).put(`/jenisalasan/update`)
+            .send({
+                'id_jenisalasan': 1,
+                'alasan': 'Test 2'
+            })
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('PUT Data Jenis Alasan', (done) => {
+        chai.request(app).put(`/jenisalasan/update`).set('Authorization', `Bearer ${token}`)
+            .send({
+                'id_jenisalasan': 1,
+                'alasan': 'test 2'
+            })
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('DELETE Data Jenis Alasan but User Not Login', (done) => {
+        let id_jenisalasan = 1;
+        chai.request(app).delete(`/jenisalasan/delete/${id_jenisalasan}`)
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('DELETE Data Jenis Alasan', (done) => {
+        let id_jenisalasan = 1;
+        chai.request(app).delete(`/jenisalasan/delete/${id_jenisalasan}`).set('Authorization', `Bearer ${token}`)
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
 })
 
 describe('Test API GET Data Kelurahan', () => {
@@ -1163,6 +1373,84 @@ describe('Test API GET Data Kelurahan', () => {
             // console.log(res.body);
             expect(res).to.have.be.status(200)
             expect(res.body.values).to.deep.include({'id_kelurahan': 1, 'id_kecamatan': 1, 'kelurahan': 'Antapani Kidul', 'kode_pos': '39152'})
+            done();
+        })
+    })
+
+    it('POST Data Kelurahan but User Not Login', (done) => {
+        chai.request(app).post(`/kelurahan/add`)
+            .send({
+                'id_kecamatan': 2,
+                'kelurahan': 'Antapani Kidul',
+                'kode_pos': '39152'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('POST Data Kelurahan', (done) => {
+        chai.request(app).post(`/kelurahan/add`).set('Authorization', `Bearer ${token}`)
+            .send({
+                'id_kecamatan': 2,
+                'kelurahan': 'Antapani Kidul',
+                'kode_pos': '39152'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('PUT Data Kelurahan but User Not Login', (done) => {
+        chai.request(app).put(`/kelurahan/update`)
+            .send({
+                'id_kelurahan': 2,
+                'id_kecamatan': 2,
+                'kelurahan': 'Antapani Kidul',
+                'kode_pos': '39152'
+            })
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('PUT Data Kelurahan', (done) => {
+        chai.request(app).put(`/kelurahan/update`).set('Authorization', `Bearer ${token}`)
+            .send({
+                'id_kelurahan': 2,
+                'id_kecamatan': 2,
+                'kelurahan': 'Antapani Kidul',
+                'kode_pos': '39152'
+            })
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('DELETE Data Kelurahan but User Not Login', (done) => {
+        let id_kelurahan = 2;
+        chai.request(app).delete(`/kelurahan/delete/${id_kelurahan}`)
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('DELETE Data Kelurahan', (done) => {
+        let id_kelurahan = 2;
+        chai.request(app).delete(`/kelurahan/delete/${id_kelurahan}`).set('Authorization', `Bearer ${token}`)
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
             done();
         })
     })
@@ -1206,6 +1494,76 @@ describe('Test API GET Data Pekerjaan', () => {
         })
     })
 
+    it('POST Data Pekerjaan but User Not Login', (done) => {
+        chai.request(app).post(`/pekerjaan/add`)
+            .send({
+                'pekerjaan': '1'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('POST Data Pekerjaan', (done) => {
+        chai.request(app).post(`/pekerjaan/add`).set('Authorization', `Bearer ${token}`)
+            .send({
+                'pekerjaan': '1'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('PUT Data Pekerjaan but User Not Login', (done) => {
+        chai.request(app).put(`/pekerjaan/update`)
+            .send({
+                'id_pekerjaan': '2',
+                'pekerjaan': '2'
+            })
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('PUT Data Pekerjaan', (done) => {
+        chai.request(app).put(`/pekerjaan/update`).set('Authorization', `Bearer ${token}`)
+            .send({
+                'id_pekerjaan': '2',
+                'pekerjaan': '2'
+            })
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('DELETE Data Pekerjaan but User Not Login', (done) => {
+        let id_pekerjaan = 2;
+        chai.request(app).delete(`/pekerjaan/delete/${id_pekerjaan}`)
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('DELETE Data Pekerjaan', (done) => {
+        let id_pekerjaan = 2;
+        chai.request(app).delete(`/pekerjaan/delete/${id_pekerjaan}`).set('Authorization', `Bearer ${token}`)
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
 })
 
 describe('Test API GET Data Pendidikan', () => {
@@ -1241,6 +1599,76 @@ describe('Test API GET Data Pendidikan', () => {
             // console.log(res.body);
             expect(res).to.have.be.status(200)
             expect(res.body.values).to.deep.include({'id_pendidikan': 1, 'pendidikan': 'Tidak/Belum Sekolah'})
+            done();
+        })
+    })
+
+    it('POST Data Pendidikan but User Not Login', (done) => {
+        chai.request(app).post(`/pendidikan/add`)
+            .send({
+                'pendidikan': '1'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('POST Data Pendidikan', (done) => {
+        chai.request(app).post(`/pendidikan/add`).set('Authorization', `Bearer ${token}`)
+            .send({
+                'pendidikan': '1'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('PUT Data Pendidikan but User Not Login', (done) => {
+        chai.request(app).put(`/pendidikan/update`)
+            .send({
+                'id_pendidikan': '2',
+                'pendidikan': '2'
+            })
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('PUT Data Pendidikan', (done) => {
+        chai.request(app).put(`/pendidikan/update`).set('Authorization', `Bearer ${token}`)
+            .send({
+                'id_pendidikan': '2',
+                'pendidikan': '2'
+            })
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('DELETE Data Pendidikan but User Not Login', (done) => {
+        let id_pendidikan = 2;
+        chai.request(app).delete(`/pendidikan/delete/${id_pendidikan}`)
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('DELETE Data Pendidikan', (done) => {
+        let id_pendidikan = 2;
+        chai.request(app).delete(`/pendidikan/delete/${id_pendidikan}`).set('Authorization', `Bearer ${token}`)
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
             done();
         })
     })
@@ -1284,6 +1712,76 @@ describe('Test API GET Data Penghasilan', () => {
         })
     })
 
+    it('POST Data Penghasilan but User Not Login', (done) => {
+        chai.request(app).post(`/penghasilan/add`)
+            .send({
+                'penghasilan': '1'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('POST Data Penghasilan', (done) => {
+        chai.request(app).post(`/penghasilan/add`).set('Authorization', `Bearer ${token}`)
+            .send({
+                'penghasilan': '1'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('PUT Data Penghasilan but User Not Login', (done) => {
+        chai.request(app).put(`/penghasilan/update`)
+            .send({
+                'id_penghasilan': '2',
+                'penghasilan': '2'
+            })
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('PUT Data Pengashilan', (done) => {
+        chai.request(app).put(`/penghasilan/update`).set('Authorization', `Bearer ${token}`)
+            .send({
+                'id_penghasilan': '2',
+                'penghasilan': '2'
+            })
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('DELETE Data Penghasilan but User Not Login', (done) => {
+        let id_penghasilan = 2;
+        chai.request(app).delete(`/penghasilan/delete/${id_penghasilan}`)
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('DELETE Data Penghasilan', (done) => {
+        let id_penghasilan = 2;
+        chai.request(app).delete(`/penghasilan/delete/${id_penghasilan}`).set('Authorization', `Bearer ${token}`)
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
 })
 
 describe('Test API GET Data PIP', () => {
@@ -1319,6 +1817,86 @@ describe('Test API GET Data PIP', () => {
             // console.log(res.body);
             expect(res).to.have.be.status(200)
             expect(res.body.values).to.deep.include({'id_pip': 1, 'id_siswa': 'SSW050221001', 'alasan_layakpip': 'Keluarga Kurang Mampu', 'no_kip': '123456', 'nama_kip': 'Udin'})
+            done();
+        })
+    })
+
+    it('POST Data PIP but User Not Login', (done) => {
+        chai.request(app).post(`/pip/add`)
+            .send({
+                'id_siswa': 'SSW050221001',
+                'alasan_layakpip': 'Keluarga Kurang Mampu',
+                'no_kip': '123456',
+                'nama_kip': 'Udin'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('POST Data PIP', (done) => {
+        chai.request(app).post(`/pip/add`).set('Authorization', `Bearer ${token}`)
+            .send({
+                'id_siswa': 'SSW050221001',
+                'alasan_layakpip': 'Keluarga Kurang Mampu',
+                'no_kip': '123456',
+                'nama_kip': 'Udin'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('PUT Data PIP but User Not Login', (done) => {
+        chai.request(app).put(`/pip/update`)
+            .send({
+                'id_siswa': 'SSW050221001',
+                'alasan_layakpip': 'Keluarga Kurang Mampu',
+                'no_kip': '123456',
+                'nama_kip': 'Udin'
+            })
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('PUT Data PIP', (done) => {
+        chai.request(app).put(`/pip/update`).set('Authorization', `Bearer ${token}`)
+            .send({
+                'id_siswa': 'SSW050221001',
+                'alasan_layakpip': 'Keluarga Kurang Mampu',
+                'no_kip': '123456',
+                'nama_kip': 'Udin'
+            })
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('DELETE Data PIP but User Not Login', (done) => {
+        let id_pip = 1;
+        chai.request(app).delete(`/pip/delete/${id_pip}`)
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('DELETE Data PIP', (done) => {
+        let id_pip = 1;
+        chai.request(app).delete(`/pip/delete/${id_pip}`).set('Authorization', `Bearer ${token}`)
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
             done();
         })
     })
@@ -1362,6 +1940,98 @@ describe('Test API GET Data Priodik Siswa', () => {
         })
     })
 
+    it('POST Data Priodik Siswa but User Not Login', (done) => {
+        chai.request(app).post(`/priodiksiswa/add`)
+            .send({
+                'id_priodik_siswa': 'PSW050221011',
+                'id_siswa': 'SSW050221016',
+                'tinggi_badan': '1',
+                'berat_badan': '1',
+                'jarak_kesekolah': '1',
+                'detail_jarak': '1',
+                'jml_saudarakandung': '1'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('POST Data Priodik Siswa', (done) => {
+        chai.request(app).post(`/priodiksiswa/add`).set('Authorization', `Bearer ${token}`)
+            .send({
+                'id_priodik_siswa': 'PSW050221011',
+                'id_siswa': 'SSW050221016',
+                'tinggi_badan': '1',
+                'berat_badan': '1',
+                'jarak_kesekolah': '1',
+                'detail_jarak': '1',
+                'jml_saudarakandung': '1'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('PUT Data Priodik Siswa but User Not Login', (done) => {
+        chai.request(app).put(`/priodiksiswa/update`)
+            .send({
+                'id_priodik_siswa': 'PSW050221011',
+                'id_siswa': 'SSW050221016',
+                'tinggi_badan': '1',
+                'berat_badan': '1',
+                'jarak_kesekolah': '1',
+                'detail_jarak': '1',
+                'jml_saudarakandung': '1'
+            })
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('PUT Data Priodik Siswa', (done) => {
+        chai.request(app).put(`/priodiksiswa/update`).set('Authorization', `Bearer ${token}`)
+            .send({
+                'id_priodik_siswa': 'PSW050221011',
+                'id_siswa': 'SSW050221016',
+                'tinggi_badan': '1',
+                'berat_badan': '1',
+                'jarak_kesekolah': '1',
+                'detail_jarak': '1',
+                'jml_saudarakandung': '1'
+            })
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('DELETE Data Priodik Siswa but User Not Login', (done) => {
+        let id_priodik_siswa = 'PSW050221002';
+        chai.request(app).delete(`/priodiksiswa/delete/${id_priodik_siswa}`)
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('DELETE Data Priodik Siswa', (done) => {
+        let id_priodik_siswa = 'PSW050221002';
+        chai.request(app).delete(`/priodiksiswa/delete/${id_priodik_siswa}`).set('Authorization', `Bearer ${token}`)
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
 })
 
 describe('Test API GET Data Siswa Masuk', () => {
@@ -1377,6 +2047,121 @@ describe('Test API GET Data Siswa Masuk', () => {
     it('GET All Data Siswa Masuk', (done) => {           
         chai.request(app).get('/siswamasuk/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
             // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('GET Data Siswa Masuk by ID but User Not Login', (done) => {   
+        let id_siswamasuk = 'SWM050221002';        
+        chai.request(app).get(`/siswamasuk/view/${id_siswamasuk}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it.skip('GET Data Siswa Masuk by ID', (done) => {   
+        let id_siswamasuk = 'SWM050221002';       
+        chai.request(app).get(`/siswamasuk/view/${id_siswamasuk}`).set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            expect(res.body.values).to.deep.include({'id_siswamasuk': 'SWM050221002', 'id_siswa': 'SSW050221002', 'jenis_daftar': '1', 'tgl_masuk': '2021-02-11', 'nis': '122', 'no_ujian': '123', 'no_ujian': '123', 'no_skhus': '123'})
+            done();
+        })
+    })
+
+    it('POST Data Siswa Masuk but User Not Login', (done) => {
+        chai.request(app).post(`/siswamasuk/add`)
+            .send({
+                'id_siswamasuk': 'SWM050221010',
+                'id_siswa': 'SSW050221002',
+                'jenis_daftar': '1',
+                'tgl_masuk': '2021-02-11',
+                'nis': '122',
+                'no_ujian': '123',
+                'no_ujian': '123',
+                'no_skhus': '123'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it.skip('POST Data Siswa Masuk', (done) => {
+        chai.request(app).post(`/siswamasuk/add`).set('Authorization', `Bearer ${token}`)
+            .send({
+                'id_siswamasuk': 'SWM050221010',
+                'id_siswa': 'SSW050221002',
+                'jenis_daftar': '1',
+                'tgl_masuk': '2021-02-11',
+                'nis': '122',
+                'no_ujian': '123',
+                'no_ujian': '123',
+                'no_skhus': '123'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('PUT Data Siswa Masuk but User Not Login', (done) => {
+        chai.request(app).put(`/siswamasuk/update`)
+            .send({
+                'id_siswamasuk': 'SWM050221010',
+                'id_siswa': 'SSW050221001',
+                'jenis_daftar': '1',
+                'tgl_masuk': '2021-02-11',
+                'nis': '122',
+                'no_ujian': '123',
+                'no_ujian': '123',
+                'no_skhus': '123'
+            })
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('PUT Data Siswa Masuk', (done) => {
+        chai.request(app).put(`/siswamasuk/update`).set('Authorization', `Bearer ${token}`)
+            .send({
+                'id_siswamasuk': 'SWM050221010',
+                'id_siswa': 'SSW050221001',
+                'jenis_daftar': '1',
+                'tgl_masuk': '2021-02-11',
+                'nis': '122',
+                'no_ujian': '123',
+                'no_ujian': '123',
+                'no_skhus': '123'
+            })
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('DELETE Data Siswa Masuk but User Not Login', (done) => {
+        let id_siswamasuk = 'SWM050221001';
+        chai.request(app).delete(`/siswamasuk/delete/${id_siswamasuk}`)
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('DELETE Data Siswa Masuk', (done) => {
+        let id_siswamasuk = 'SWM050221001';
+        chai.request(app).delete(`/siswamasuk/delete/${id_siswamasuk}`).set('Authorization', `Bearer ${token}`)
+            .end((err, res) => { 
+            // console.log(res.body); 
             expect(res).to.have.be.status(200)
             done();
         })
@@ -1417,6 +2202,76 @@ describe('Test API GET Data Status Tinggal', () => {
             // console.log(res.body);
             expect(res).to.have.be.status(200)
             expect(res.body.values).to.deep.include({'id_statustinggal': 1, 'status_tinggal': 'Lainnya'})
+            done();
+        })
+    })
+
+    it('POST Data Status Tinggal but User Not Login', (done) => {
+        chai.request(app).post(`/statustinggal/add`)
+            .send({
+                'status_tinggal': 'test'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('POST Data Status Tinggal', (done) => {
+        chai.request(app).post(`/statustinggal/add`).set('Authorization', `Bearer ${token}`)
+            .send({
+                'status_tinggal': 'test'
+            })
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('PUT Data Status Tinggal but User Not Login', (done) => {
+        chai.request(app).put(`/statustinggal/update`)
+            .send({
+                'id_statustinggal': 1,
+                'status_tinggal': 'Test 2'
+            })
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('PUT Data Status Tinggal', (done) => {
+        chai.request(app).put(`/statustinggal/update`).set('Authorization', `Bearer ${token}`)
+            .send({
+                'id_statustinggal': 1,
+                'status_tinggal': 'Test 2'
+            })
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('DELETE Data Status Tinggal but User Not Login', (done) => {
+        let id_statustinggal = 1;
+        chai.request(app).delete(`/statustinggal/delete/${id_statustinggal}`)
+            .end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(401)
+            done();
+        })
+    })
+
+    it('DELETE Data Status Tinggal', (done) => {
+        let id_statustinggal = 1;
+        chai.request(app).delete(`/statustinggal/delete/${id_statustinggal}`).set('Authorization', `Bearer ${token}`)
+            .end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
             done();
         })
     })
@@ -1512,10 +2367,10 @@ describe('Test API GET Data Transportasi', () => {
 
     it('DELETE Data Transportasi but User Not Login', (done) => {
         let id_transportasi = 1;
-        chai.request(app).delete(`/transpid_transportasi/delete/${id_transportasi}`)
+        chai.request(app).delete(`/transportasi/delete/${id_transportasi}`)
             .end((err, res) => { 
             // console.log(res.body);
-            expect(res).to.have.be.status(404)
+            expect(res).to.have.be.status(401)
             done();
         })
     })
