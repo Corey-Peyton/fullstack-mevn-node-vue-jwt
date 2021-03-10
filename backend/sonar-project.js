@@ -5,9 +5,9 @@ const sonarqubeScanner = require('sonarqube-scanner');
        'sonar.login': 'admin',
        'sonar.password': 'permadi',
        'sonar.sources': '.',
-        //  'sonar.exclusions' : 'controller/*', // Entry point of your code,
+        //  'sonar.exclusions' : 'controller/controller_detailbeasiswa',
        'sonar.inclusions' : 'controller/*', // Entry point of your code,
-       'sonar.dynamicAnalysis' : 'reuseReports',
+      //  'sonar.dynamicAnalysis' : 'reuseReports',
        'sonar.javascript.lcov.reportPaths' : 'coverage/lcov.info'
        },
 

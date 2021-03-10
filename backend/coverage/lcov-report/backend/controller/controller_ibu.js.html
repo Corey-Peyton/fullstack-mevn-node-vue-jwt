@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">58.46% </span>
+                <span class="strong">76.92% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>38/65</span>
+                <span class='fraction'>50/65</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">16.67% </span>
+                <span class="strong">45.83% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/24</span>
+                <span class='fraction'>11/24</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.67% </span>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>8/12</span>
+                <span class='fraction'>10/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">58.46% </span>
+                <span class="strong">76.92% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>38/65</span>
+                <span class='fraction'>50/65</span>
             </div>
         
             
@@ -203,35 +203,35 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -339,36 +339,36 @@ var response = require('./../response');
 var connection = require('./../connection');
 &nbsp;
 // select semua ibu
-exports.viewIbu = <span class="fstat-no" title="function not covered" >fu</span>nction(req,res){
-    let nama_ibu_params = <span class="cstat-no" title="statement not covered" >req.query.nama_ibu;</span>
-    let nama_ibu = <span class="cstat-no" title="statement not covered" >"%" + nama_ibu_params + "%";</span>
-    let id_pendidikan = <span class="cstat-no" title="statement not covered" >req.query.id_pendidikan;</span>
-    let id_pekerjaan = <span class="cstat-no" title="statement not covered" >req.query.id_pekerjaan;</span>
-    let query = <span class="cstat-no" title="statement not covered" >` SELECT id_ibu, nik, DATE_FORMAT(tgl_lahir, '%d %M %Y') AS tgl_lahir, nama_ibu, pendidikan, pekerjaan, ibu.id_pendidikan, ibu.id_pekerjaan </span>
+exports.viewIbu = function(req,res){
+    let nama_ibu_params = req.query.nama_ibu;
+    let nama_ibu = "%" + nama_ibu_params + "%";
+    let id_pendidikan = req.query.id_pendidikan;
+    let id_pekerjaan = req.query.id_pekerjaan;
+    let query = ` SELECT id_ibu, nik, DATE_FORMAT(tgl_lahir, '%d %M %Y') AS tgl_lahir, nama_ibu, pendidikan, pekerjaan, ibu.id_pendidikan, ibu.id_pekerjaan 
                     FROM ibu
                     INNER JOIN pendidikan ON pendidikan.id_pendidikan = ibu.id_pendidikan
                     INNER JOIN pekerjaan ON pekerjaan.id_pekerjaan = ibu.id_pekerjaan
                     INNER JOIN penghasilan ON penghasilan.id_penghasilan = ibu.id_penghasilan
                     INNER JOIN disabilitas ON disabilitas.id_disabilitas = ibu.id_disabilitas 
                     WHERE 1+1 `;
-    let param = <span class="cstat-no" title="statement not covered" >[]</span>
-<span class="cstat-no" title="statement not covered" >    if (nama_ibu_params &amp;&amp; nama_ibu_params !='') {</span>
+    let param = []
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (nama_ibu_params &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >nama_ibu_params !='')</span> {
 <span class="cstat-no" title="statement not covered" >        query = query + 'AND ibu.nama_ibu LIKE ? ';</span>
 <span class="cstat-no" title="statement not covered" >        param.push(nama_ibu)</span>
     }
-<span class="cstat-no" title="statement not covered" >    if (id_pendidikan &amp;&amp; id_pendidikan !='') {</span>
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (id_pendidikan &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >id_pendidikan !='')</span> {
 <span class="cstat-no" title="statement not covered" >        query = query + 'AND ibu.id_pendidikan = ? ';</span>
 <span class="cstat-no" title="statement not covered" >        param.push(id_pendidikan)</span>
     }
-<span class="cstat-no" title="statement not covered" >    if (id_pekerjaan &amp;&amp; id_pekerjaan !='') {</span>
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (id_pekerjaan &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >id_pekerjaan !='')</span> {
 <span class="cstat-no" title="statement not covered" >        query = query + 'AND ibu.id_pekerjaan = ? ';</span>
 <span class="cstat-no" title="statement not covered" >        param.push(id_pekerjaan)</span>
     }
-<span class="cstat-no" title="statement not covered" >    connection.query(query, param, <span class="fstat-no" title="function not covered" >fu</span>nction(error, rows, field){</span>
-<span class="cstat-no" title="statement not covered" >    if(error){</span>
+    connection.query(query, param, function(error, rows, field){
+    <span class="missing-if-branch" title="if path not taken" >I</span>if(error){
 <span class="cstat-no" title="statement not covered" >        connection.log(error);</span>
     } else {
-<span class="cstat-no" title="statement not covered" >        response.ok(rows,res)</span>
+        response.ok(rows,res)
     }
     });
 };
@@ -475,7 +475,7 @@ exports.deleteIbu = function(req,res) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Mar 09 2021 19:53:42 GMT+0700 (Western Indonesia Time)
+                at Wed Mar 10 2021 14:36:43 GMT+0700 (Western Indonesia Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

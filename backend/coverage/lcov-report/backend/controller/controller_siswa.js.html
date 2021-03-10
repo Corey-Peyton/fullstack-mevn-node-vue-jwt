@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">72% </span>
+                <span class="strong">75.2% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>90/125</span>
+                <span class='fraction'>94/125</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">31.25% </span>
+                <span class="strong">34.38% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>10/32</span>
+                <span class='fraction'>11/32</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>8/20</span>
+                <span class='fraction'>10/20</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">72% </span>
+                <span class="strong">75.2% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>90/125</span>
+                <span class='fraction'>94/125</span>
             </div>
         
             
@@ -357,25 +357,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -608,9 +608,9 @@ exports.viewSiswa = function(req,res){
 };
 &nbsp;
 // select data siswa berdasarkan id
-exports.viewSiswaById = <span class="fstat-no" title="function not covered" >fu</span>nction(req,res){
-    let id_siswa = <span class="cstat-no" title="statement not covered" >req.params.id_siswa;</span>
-<span class="cstat-no" title="statement not covered" >    connection.query(`SELECT *, DATE_FORMAT(siswa.tgl_lahir, '%Y-%m-%d') AS tgl_lahir, siswa.jenis_kelamin, siswa.nik, siswa.id_disabilitas, siswa.id_statustinggal FROM siswa</span>
+exports.viewSiswaById = function(req,res){
+    let id_siswa = req.params.id_siswa;
+    connection.query(`SELECT *, DATE_FORMAT(siswa.tgl_lahir, '%Y-%m-%d') AS tgl_lahir, siswa.jenis_kelamin, siswa.nik, siswa.id_disabilitas, siswa.id_statustinggal FROM siswa
                         INNER JOIN agama ON agama.id_agama = siswa.id_agama
                         INNER JOIN disabilitas ON disabilitas.id_disabilitas = siswa.id_disabilitas
                         INNER JOIN kelurahan ON kelurahan.id_kelurahan = siswa.id_kelurahan
@@ -623,11 +623,11 @@ exports.viewSiswaById = <span class="fstat-no" title="function not covered" >fu<
                         LEFT JOIN wali ON wali.id_wali = siswa.id_wali
                         INNER JOIN siswa_masuk ON siswa_masuk.id_siswa = siswa.id_siswa
                         WHERE siswa.id_siswa = ?`, [id_siswa],
-<span class="fstat-no" title="function not covered" >        fu</span>nction(error, rows, field){
-<span class="cstat-no" title="statement not covered" >            if(error){</span>
+        function(error, rows, field){
+            <span class="missing-if-branch" title="if path not taken" >I</span>if(error){
 <span class="cstat-no" title="statement not covered" >                connection.log(error);</span>
             } else {
-<span class="cstat-no" title="statement not covered" >                response.ok(rows,res)</span>
+                response.ok(rows,res)
             }
         }
     );
@@ -820,7 +820,7 @@ exports.deleteSiswa = function(req,res) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Mar 09 2021 19:53:42 GMT+0700 (Western Indonesia Time)
+                at Wed Mar 10 2021 14:36:43 GMT+0700 (Western Indonesia Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

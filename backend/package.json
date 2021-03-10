@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --exit",
-    "test-cover": "nyc report --reporter=lcov",
+    "test-cover": "nyc --reporter=lcov --reporter=text --reporter=html ./node_modules/.bin/mocha test/* /.js --exit",
     "sonar": "node sonar-project.js",
     "serve": "node index.js"
   },

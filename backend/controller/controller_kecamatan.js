@@ -5,17 +5,6 @@ var response = require('./../response');
 // import function file connection
 var connection = require('./../connection');
 
-// select semua data agama
-exports.viewAgama = function(req,res){
-    connection.query("SELECT * FROM agama", function(error, rows, field){
-    if(error){
-        connection.log(error);
-    } else {
-        response.ok(rows,res)
-    }
-    });
-};
-
 // select semua kecamatan
 exports.viewKecamatan = function(req,res){
     connection.query("SELECT * FROM kecamatan", function(error, rows, field){

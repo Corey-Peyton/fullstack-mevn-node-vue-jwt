@@ -2,5 +2,5 @@ projectKey=restAPI_siswa
 serverUrl=http://localhost:9000
 serverVersion=8.7.0.41497
 dashboardUrl=http://localhost:9000/dashboard?id=restAPI_siswa
-ceTaskId=AXgXFF1bCa7Qd-3wCkJ9
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AXgXFF1bCa7Qd-3wCkJ9
+ceTaskId=AXgbFP469esTQEvzW6Q7
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AXgbFP469esTQEvzW6Q7
