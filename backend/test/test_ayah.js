@@ -133,7 +133,7 @@ describe('Test API Data Ayah', () => {
     it('PUT Data Ayah', (done) => {
         chai.request(app).put(`/ayah/update`).set('Authorization', `Bearer ${token}`)
             .send({
-                'id_ayah': 'PRM030221003',
+                'id_ayah': 'PRM030221004',
                 'nama_ayah': 'Fadly',
                 'nik': '1234567891',
                 'tgl_lahir': '1980-09-01',
