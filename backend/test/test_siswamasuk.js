@@ -65,6 +65,15 @@ describe('Test API GET Data Siswa Masuk', () => {
         })
     })
 
+    it('GET Data Siswa Masuk by Last ID', (done) => {   
+        chai.request(app).get(`/siswamasuk/viewlast`).set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            // expect(res.body.values).to.deep.include({'id_siswamasuk': 'SWM050221002', 'id_siswa': 'SSW050221002', 'jenis_daftar': '1', 'tgl_masuk': '2021-02-11', 'nis': '122', 'no_ujian': '123', 'no_ujian': '123', 'no_skhus': '123'})
+            done();
+        })
+    })
+
     it('POST Data Siswa Masuk but User Not Login', (done) => {
         chai.request(app).post(`/siswamasuk/add`)
             .send({

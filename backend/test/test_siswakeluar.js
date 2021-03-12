@@ -38,8 +38,16 @@ describe('Test API Data Siswa Keluar', () => {
         })
     })
 
-    it('GET All Data Siswa Keluar', (done) => {           
-        chai.request(app).get('/siswakeluar/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+    it('GET All Data Siswa Keluar params Not Null', (done) => {           
+        chai.request(app).get('/siswakeluar/view?nama_lengkap=a&jenis_kelamin=a&jenis_alasan=a').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('GET All Data Siswa Keluar params  Null', (done) => {           
+        chai.request(app).get('/siswakeluar/view?nama_lengkap=&jenis_kelamin=&jenis_alasan=').set('Authorization', `Bearer ${token}`).end((err, res) => {  
             // console.log(res.body);
             expect(res).to.have.be.status(200)
             done();
@@ -48,7 +56,7 @@ describe('Test API Data Siswa Keluar', () => {
 
     it('GET Data Siswa Keluar by ID but User Not Login', (done) => {
         let id_siswakeluar = "SWK050221001";
-        chai.request(app).get(`/siswa/view/${id_siswakeluar}`).end((err, res) => { 
+        chai.request(app).get(`/siswakeluar/view/${id_siswakeluar}`).end((err, res) => { 
             // console.log(res.body); 
             expect(res).to.have.be.status(401)
             done();
@@ -56,8 +64,17 @@ describe('Test API Data Siswa Keluar', () => {
     })
 
     it('GET Data Siswa Keluar by ID', (done) => {
-        let id_siswakeluar = "SWK050221001";
-        chai.request(app).get(`/siswa/view/${id_siswakeluar}`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
+        let id_siswa = "SSW050221001";
+        chai.request(app).get(`/siswakeluar/view/${id_siswa}`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            // expect(res.body.values).to.deep.include({'id_siswakeluar': 'SWK050221001', 'id_siswa': 'SSW050221001', 'id_jenisalasan': 1, 'tgl_keluar': '2021-02-21', 'keterangan': ''})
+            done();
+        })
+    })
+
+    it('GET Data Siswa Keluar by Last ID', (done) => {
+        chai.request(app).get(`/siswakeluar/viewlast`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
             // console.log(res.body); 
             expect(res).to.have.be.status(200)
             // expect(res.body.values).to.deep.include({'id_siswakeluar': 'SWK050221001', 'id_siswa': 'SSW050221001', 'id_jenisalasan': 1, 'tgl_keluar': '2021-02-21', 'keterangan': ''})

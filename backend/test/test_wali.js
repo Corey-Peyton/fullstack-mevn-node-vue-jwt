@@ -38,8 +38,16 @@ describe('Test API Data Wali', () => {
         })
     })
 
-    it('GET All Data Wali', (done) => {           
-        chai.request(app).get('/wali/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+    it('GET All Data Wali params Not Null', (done) => {           
+        chai.request(app).get('/wali/view?nama_wali=a&id_pendidikan=sd&id_pekerjaan=PNS').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('GET All Data Wali params Null', (done) => {           
+        chai.request(app).get('/wali/view?nama_wali=&id_pendidikan=&id_pekerjaan=').set('Authorization', `Bearer ${token}`).end((err, res) => {  
             // console.log(res.body);
             expect(res).to.have.be.status(200)
             done();
@@ -61,6 +69,14 @@ describe('Test API Data Wali', () => {
             // console.log(res.body); 
             expect(res).to.have.be.status(200)
             expect(res.body.values).to.deep.include({'id_wali': 'PRW030221001', 'nama_wali': 'Tejo', 'jenis_kelamin': 'L', 'nik': '1234567891', 'tgl_lahir': '1998-04-03', 'id_pendidikan': 3, 'id_pekerjaan': 2, 'id_penghasilan': 1, 'id_disabilitas': 1})
+            done();
+        })
+    })
+
+    it('GET Data Wali by last ID', (done) => {
+        chai.request(app).get(`/wali/viewlast`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
             done();
         })
     })

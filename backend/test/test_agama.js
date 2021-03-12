@@ -30,7 +30,7 @@ describe('Test Login User', () => {
 
 describe('Test API Data Agama', () => {
 
-    it('GET All Data Agama but User Not Login', (done) => {           
+    it('GET All Data Agama but User Not Login', (done) => {  
         chai.request(app).get('/agama/view').end((err, res) => {  
             // console.log(res.body);
             expect(res).to.have.be.status(401)
@@ -38,8 +38,24 @@ describe('Test API Data Agama', () => {
         })
     })
 
-    it('GET All Data Agama', (done) => {           
-        chai.request(app).get('/agama/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+    it('GET All Data Agama params Not Null', (done) => {           
+        chai.request(app).get('/agama/view?agama=Islam').set('Authorization', `Bearer ${token}`)
+            // .send({
+            //     'agama': 'test'
+            // })
+            .end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('GET All Data Agama params Null', (done) => {           
+        chai.request(app).get('/agama/view?agama=').set('Authorization', `Bearer ${token}`)
+            // .send({
+            //     'agama': 'test'
+            // })
+            .end((err, res) => {  
             // console.log(res.body);
             expect(res).to.have.be.status(200)
             done();

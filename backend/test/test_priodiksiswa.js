@@ -65,6 +65,14 @@ describe('Test API GET Data Priodik Siswa', () => {
         })
     })
 
+    it('GET Data Priodik Siswa by Last ID', (done) => {          
+        chai.request(app).get(`/priodiksiswa/viewlast`).set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
     it('POST Data Priodik Siswa but User Not Login', (done) => {
         chai.request(app).post(`/priodiksiswa/add`)
             .send({

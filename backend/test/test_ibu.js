@@ -38,8 +38,15 @@ describe('Test API Data Ibu', () => {
         })
     })
 
-    it('GET All Data Ibu', (done) => {
-        chai.request(app).get('/ibu/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+    it('GET All Data Ibu params Not Null', (done) => {
+        chai.request(app).get('/ibu/view?nama_ibu=a&id_pendidikan=a&id_pekerjaan=a').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+    it('GET All Data Ibu params Null', (done) => {
+        chai.request(app).get('/ibu/view?nama_ibu=&id_pendidikan=&id_pekerjaan=').set('Authorization', `Bearer ${token}`).end((err, res) => {  
             // console.log(res.body);
             expect(res).to.have.be.status(200)
             done();
@@ -61,6 +68,14 @@ describe('Test API Data Ibu', () => {
             // console.log(res.body);
             expect(res).to.have.be.status(200)
             expect(res.body.values).to.deep.include({'id_ibu': 'PRF030221002', 'nama_ibu': 'Sari', 'nik': '123456789', 'tgl_lahir': '1998-04-03', 'id_pendidikan': 1, 'id_pekerjaan': 1, 'id_penghasilan': 1, 'id_disabilitas': 1})
+            done();
+        })
+    })
+
+    it('GET Data Ibu by Last ID', (done) => {
+        chai.request(app).get(`/ibu/viewlast`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
             done();
         })
     })

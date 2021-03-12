@@ -38,8 +38,16 @@ describe('Test API Data Ayah', () => {
         })
     })
 
-    it('GET All Data Ayah', (done) => {           
-        chai.request(app).get('/ayah/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+    it('GET All Data Ayah params Not Null', (done) => {           
+        chai.request(app).get('/ayah/view?nama_ayah=Yanto&id_pendidikan=sd&id_pekerjaan=PNS').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('GET All Data Ayah params Null', (done) => {           
+        chai.request(app).get('/ayah/view?nama_ayah=&id_pendidikan=&id_pekerjaan=').set('Authorization', `Bearer ${token}`).end((err, res) => {  
             // console.log(res.body);
             expect(res).to.have.be.status(200)
             done();
@@ -69,6 +77,14 @@ describe('Test API Data Ayah', () => {
             // console.log(res.body); 
             expect(res).to.have.be.status(200)
             expect(res.body.values).to.deep.include({'id_ayah': 'PRM030221002', 'nama_ayah': 'prayitno', 'nik': '1234567891', 'tgl_lahir': '1980-09-01', 'id_pendidikan': 3, 'id_pekerjaan': 2, 'id_penghasilan': 1, 'id_disabilitas': 1})
+            done();
+        })
+    })
+
+    it('GET Data Ayah by Last ID', (done) => {
+        chai.request(app).get(`/ayah/viewlast`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
             done();
         })
     })

@@ -38,8 +38,16 @@ describe('Test API Data Siswa', () => {
         })
     })
 
-    it('GET All Data Siswa', (done) => {           
-        chai.request(app).get('/siswa/view').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+    it('GET All Data Siswa params Not Null', (done) => {           
+        chai.request(app).get('/siswa/view?nama_lengkap=a&jenis_kelamin=a&id_kelurahan=a').set('Authorization', `Bearer ${token}`).end((err, res) => {  
+            // console.log(res.body);
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('GET All Data Siswa params Null', (done) => {           
+        chai.request(app).get('/siswa/view?nama_lengkap=&jenis_kelamin=&id_kelurahan=').set('Authorization', `Bearer ${token}`).end((err, res) => {  
             // console.log(res.body);
             expect(res).to.have.be.status(200)
             done();
@@ -88,6 +96,46 @@ describe('Test API Data Siswa', () => {
             // 'no_telp': '1234567891',
             // 'no_hp': '1234567891',
             // 'email': 'siswa1@gmail.com'})
+            done();
+        })
+    })
+
+    it('GET Data Siswa by Last ID', (done) => {
+        chai.request(app).get(`/siswa/viewlast`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('GET Rekap Data Siswa', (done) => {
+        chai.request(app).get(`/siswa/viewrekap`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('GET Rekap Data Total Siswa', (done) => {
+        chai.request(app).get(`/siswa/viewtotal`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('GET Rekap Data Total Siswa L', (done) => {
+        chai.request(app).get(`/siswa/viewtotall`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
+            done();
+        })
+    })
+
+    it('GET Rekap Data Total Siswa P', (done) => {
+        chai.request(app).get(`/siswa/viewtotalp`).set('Authorization', `Bearer ${token}`).end((err, res) => { 
+            // console.log(res.body); 
+            expect(res).to.have.be.status(200)
             done();
         })
     })
